@@ -4,11 +4,11 @@ const userSchema = mongoose.Schema(
   {
     email: String,
     password: String,
+    companyName: String,
     isSeller: {
       type: Boolean,
       default: false,
     },
-    companyName: String,
     phoneNumber: String,
     acType: {
       type: String,

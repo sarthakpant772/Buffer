@@ -1,12 +1,16 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const authRoute = require('./routes/auth')
+
 const app = express()
 
 app.use(express.json({ limit: '64mb' }))
 app.use(cors())
 
+// routes
 
+app.use('/user', authRoute)
 
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
