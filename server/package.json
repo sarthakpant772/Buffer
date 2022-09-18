@@ -1,4 +1,5 @@
 {
+  "name": "server",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -9,5 +10,11 @@
     "mongodb": "^4.9.1",
     "mongoose": "^6.6.1",
     "nodemon": "^2.0.20"
-  }
+  },
+  "version": "1.0.0",
+  "description": "bufferBackend",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "sarthak,aastha",
+  "license": "ISC"
 }
