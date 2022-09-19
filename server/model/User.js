@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+// that want to buy stuffs
 const userSchema = mongoose.Schema(
   {
     email: String,

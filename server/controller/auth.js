@@ -4,7 +4,7 @@ const registerUser = async (req, res) => {
   const newUser = new User({
     email: req.body.email,
     password: req.body.password,
-    companyName: req.body.companyName,
+    userName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
   })
   try {
@@ -15,5 +15,7 @@ const registerUser = async (req, res) => {
     console.log(error)
   }
 }
+
+const registerCompany = async (req, res) => {}
 
 module.exports = { registerUser }
