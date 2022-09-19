@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const authRoute = require('./routes/auth')
 
 const app = express()
 
@@ -10,7 +9,11 @@ app.use(cors())
 
 // routes
 
+const authRoute = require('./routes/auth')
 app.use('/user', authRoute)
+
+const chemical = require('./routes/chemical')
+app.use('/industry', chemical)
 
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
