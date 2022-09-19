@@ -1,15 +1,20 @@
 const CompanyDetails = require('../model/CompanyDetails')
 
+// first call add chemical at the start of resitration then call addnewChemical when he want to add more chemicals
+
 const addChemical = async (req, res) => {
-  const chemicalSellings = {
-    chemicalName: req.body.chemicalSelling.chemicalName,
-    quantity: req.body.chemicalSelling.quantity,
-    pricePerGM: req.body.chemicalSelling.pricePerGM,
-    Grade: req.body.chemicalSelling.Grade,
-  }
+  // const chemicalSellings = await {}
+
   const newChemical = await CompanyDetails({
     companyRegisteredId: req.body.companyRegisteredId,
-    chemicalSelling: [chemicalSellings],
+    chemicalSelling: [
+      {
+        chemicalName: req.body.chemicalSelling.chemicalName,
+        quantity: req.body.chemicalSelling.quantity,
+        pricePerGM: req.body.chemicalSelling.pricePerGM,
+        Grade: req.body.chemicalSelling.Grade,
+      },
+    ],
   })
   try {
     const savedChemical = await newChemical.save()
@@ -19,4 +24,29 @@ const addChemical = async (req, res) => {
   }
 }
 
-module.exports = { addChemical }
+// addNewchemical is main
+
+const addNewChemical = async (req, res) => {
+  try {
+    const addedChemical = await CompanyDetails.findOneAndUpdate(
+      { companyRegisteredId: req.body.companyRegisteredId },
+      {
+        $push: {
+          chemicalSelling: [
+            {
+              chemicalName: req.body.chemicalSelling.chemicalName,
+              quantity: req.body.chemicalSelling.quantity,
+              pricePerGM: req.body.chemicalSelling.pricePerGM,
+              Grade: req.body.chemicalSelling.Grade,
+            },
+          ],
+        },
+      },
+    )
+    res.status(200).json(addedChemical)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+module.exports = { addNewChemical, addChemical }

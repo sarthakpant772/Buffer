@@ -7,7 +7,7 @@ const CompanyDetailsSchema = mongoose.Schema({
   },
   chemicalSelling: [
     {
-      chemicalName: String,
+      chemicalName: { type: String, required: true },
       quatity: Number,
       pricePerGM: Number,
       Grade: {
