@@ -1,9 +1,11 @@
 const User = require('../model/User')
-
+const argon2 = require('argon2')
 const registerUser = async (req, res) => {
+  password = req.body.password
+  password = await argon2.hash(password)
   const newUser = new User({
     email: req.body.email,
-    password: req.body.password,
+    password: password,
     userName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
     acType: req.body.acType,
@@ -23,10 +25,11 @@ const loginUser = async (req, res) => {
   const password = body?.password
   try {
     const checkUser = await User.findOne({ email: email })
-    if (checkUser.password === password) {
+    const password_hash = checkUser?.password
+    if (await argon2.verify(password_hash, password)) {
       res.status(200).json(checkUser)
     } else {
-      res.status(401).json({ text: 'password not correct' })
+      res.status(403).json({ text: 'password not correct' })
     }
   } catch (err) {
     console.log(err)
