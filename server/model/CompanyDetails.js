@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+
 // that want to sell stuff
 const CompanyDetailsSchema = mongoose.Schema({
+  // companyDetails: User,
   companyRegisteredId: {
     type: String,
     required: true,
@@ -8,7 +10,7 @@ const CompanyDetailsSchema = mongoose.Schema({
   chemicalSelling: [
     {
       chemicalName: { type: String, required: true },
-      quatity: Number,
+      quantity: { type: Number, required: true },
       pricePerGM: Number,
       Grade: {
         type: String,

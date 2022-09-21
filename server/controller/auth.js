@@ -6,6 +6,7 @@ const registerUser = async (req, res) => {
     password: req.body.password,
     userName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
+    acType: req.body.acType,
   })
   try {
     const savedUser = await newUser.save()

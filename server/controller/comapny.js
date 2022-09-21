@@ -1,3 +1,4 @@
+const { findOne } = require('../model/CompanyDetails')
 const CompanyDetails = require('../model/CompanyDetails')
 
 // first call add chemical at the start of resitration then call addnewChemical when he want to add more chemicals
@@ -58,4 +59,23 @@ const getAllChemical = async (req, res) => {
   }
 }
 
-module.exports = { addNewChemical, addChemical, getAllChemical }
+const getChemicalOfOneCompany = async (req, res) => {
+  const { id } = req.params
+  // console.log(id)
+  try {
+    const chemicals = await CompanyDetails.findOne({
+      companyRegisteredId: id,
+    })
+    res.status(200).json(chemicals)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+module.exports = {
+  addNewChemical,
+  addChemical,
+  getAllChemical,
+  getChemicalOfOneCompany,
+}
