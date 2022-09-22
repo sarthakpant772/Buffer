@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 // that want to buy stuffs
+const uniqueValidator = require('mongoose-unique-validator')
 const userSchema = mongoose.Schema(
   {
-    email: String,
+    email: { type: String, unique: true },
     password: String,
     companyName: String,
     isSeller: {
@@ -18,5 +19,6 @@ const userSchema = mongoose.Schema(
   },
   { timestamps: true },
 )
+userSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('User', userSchema)
