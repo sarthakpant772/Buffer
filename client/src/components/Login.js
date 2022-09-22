@@ -20,6 +20,7 @@ const Login = () => {
       })
       if (res.status === 200) {
         console.log('loggedin', res)
+        localStorage.setItem('companyId', res.data._id)
       } else {
         console.log('not verified')
       }
