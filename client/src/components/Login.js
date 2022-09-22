@@ -58,6 +58,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
+            type="password"
             margin="dense"
             fullWidth
             label="Password"
