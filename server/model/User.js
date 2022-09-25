@@ -16,9 +16,10 @@ const userSchema = mongoose.Schema(
       enum: ['SELLER', 'BUYER'],
       default: 'BUYER',
     },
-    previousBut: {
-      type: mongoose.Schema.Types.ObjectId,
+    previousBuy: {
+      type: [mongoose.Schema.Types.ObjectId],
       ref: 'PreviousBuy',
+      default: [],
     },
   },
   { timestamps: true },
