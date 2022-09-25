@@ -37,4 +37,6 @@ const loginUser = async (req, res) => {
   }
 }
 
+// const getSelectedUser = async(req )
+
 module.exports = { registerUser, loginUser }

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
 
 // that want to sell stuff
 const CompanyDetailsSchema = mongoose.Schema({
@@ -10,7 +9,7 @@ const CompanyDetailsSchema = mongoose.Schema({
   },
   chemicalSelling: [
     {
-      chemicalName: { type: String, required: true, unique: true },
+      chemicalName: { type: String, required: true, unique: false },
       quantity: { type: Number, required: true },
       pricePerGM: Number,
       Grade: {
@@ -24,6 +23,5 @@ const CompanyDetailsSchema = mongoose.Schema({
     },
   ],
 })
-CompanyDetailsSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('CompanyDetails', CompanyDetailsSchema)
