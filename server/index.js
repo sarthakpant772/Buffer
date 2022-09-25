@@ -21,6 +21,9 @@ app.use('/getUser', user)
 const previousBuy = require('./routes/previousBuy')
 app.use('/previousBuy', previousBuy)
 
+const cart = require('./routes/cart')
+app.use('/cart', cart)
+
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
   'mongodb+srv://buffer:buffer@cluster0.o7wpovx.mongodb.net/?retryWrites=true&w=majority'

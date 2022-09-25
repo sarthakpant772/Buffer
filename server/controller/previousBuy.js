@@ -3,7 +3,6 @@ const PreviousBuy = require('../model/PreviousBuy')
 const User = require('../model/User')
 const createPreviousBuy = async (req, res) => {
   const data = await PreviousBuy({
-    userid: req.body.userid,
     products: req.body.products,
     totalCost: req.body.totalCost,
   })

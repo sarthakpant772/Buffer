@@ -21,6 +21,11 @@ const userSchema = mongoose.Schema(
       ref: 'PreviousBuy',
       default: [],
     },
+    currentOrder: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: 'Cart',
+      default: [],
+    },
   },
   { timestamps: true },
 )
