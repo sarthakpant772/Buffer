@@ -1,8 +1,10 @@
+const { default: mongoose } = require('mongoose')
+const { findByIdAndUpdate, findOneAndUpdate } = require('../model/Cart')
 const Cart = require('../model/Cart')
 const User = require('../model/User')
 
 // addNewProduct
-const addProducts = async (req, res) => {
+const addNewProducts = async (req, res) => {
   const addedProduct = await Cart({
     userId: req.body.userId,
     products: req.body.products,
@@ -18,11 +20,16 @@ const addProducts = async (req, res) => {
   }
 }
 
-const displayCart = async (req, res) => {
-  const { id } = req.params
-
+const addProducts = async (req, res) => {
   try {
-    const data = await Cart.findOne({ userId: id })
+    const data = await Cart.findOneAndUpdate(
+      { userId: req.body.userId },
+      {
+        $push: {
+          products: req.body.products,
+        },
+      },
+    )
     res.status(200).json(data)
   } catch (err) {
     console.log(err)
@@ -30,7 +37,42 @@ const displayCart = async (req, res) => {
   }
 }
 
+const deleteProduct = async (req, res) => {
+  const userId = req.body.userId
+  const { id } = req.params
+  try {
+    const data = await Cart.findOneAndUpdate(
+      { userId: userId },
+      {
+        $pull: {
+          products: {
+            name: id,
+          },
+        },
+      },
+      { safe: true, multi: false },
+    )
+    res.status(200).json(data)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+const displayCart = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const data = await Cart.findOne({ userId: id })
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 module.exports = {
-  addProducts,
+  addNewProducts,
   displayCart,
+  addProducts,
+  deleteProduct,
 }
