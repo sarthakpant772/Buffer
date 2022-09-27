@@ -9,6 +9,7 @@ const registerUser = async (req, res) => {
     userName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
     acType: req.body.acType,
+    
   })
   try {
     const savedUser = await newUser.save()
@@ -36,5 +37,7 @@ const loginUser = async (req, res) => {
     res.status(500).json(err)
   }
 }
+
+// const getSelectedUser = async(req )
 
 module.exports = { registerUser, loginUser }
