@@ -46,7 +46,7 @@ const deleteProduct = async (req, res) => {
       {
         $pull: {
           products: {
-            name: id,
+            _id: id,
           },
         },
       },

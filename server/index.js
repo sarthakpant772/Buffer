@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+const jwt = require('jsonwebtoken')
+
+app.use(express.json())
+
 app.use(express.json({ limit: '64mb' }))
 app.use(cors())
 
@@ -23,6 +27,9 @@ app.use('/previousBuy', previousBuy)
 
 const cart = require('./routes/cart')
 app.use('/cart', cart)
+
+const tender = require('./routes/tender')
+app.use('/tender', tender)
 
 const PORT = process.env.PORT || 5000
 const MONGO_URL =

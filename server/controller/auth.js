@@ -1,5 +1,9 @@
 const User = require('../model/User')
 const argon2 = require('argon2')
+
+const jwt = require('jsonwebtoken')
+const { use } = require('../routes/auth')
+
 const registerUser = async (req, res) => {
   password = req.body.password
   password = await argon2.hash(password)
@@ -9,7 +13,6 @@ const registerUser = async (req, res) => {
     userName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
     acType: req.body.acType,
-    
   })
   try {
     const savedUser = await newUser.save()
