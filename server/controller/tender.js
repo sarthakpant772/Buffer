@@ -5,10 +5,7 @@ const argon2 = require('argon2')
 const createTender = async (req, res) => {
   const data = await Tender({
     productId: req.body.productId,
-    allTenders: {
-      price: price,
-      tenderCompanyId: req.body.allTenders.tenderCompanyId,
-    },
+    allTenders: req.body.allTenders,
   })
 
   try {
@@ -25,10 +22,11 @@ const addTender = async (req, res) => {
   price = price.toString()
   console.log(price)
   const { product_id } = req.params
+  console.log(product_id)
   try {
     const savedData = await Tender.findOneAndUpdate(
       {
-        product_id: product_id,
+        productId: product_id,
       },
       {
         $push: {
@@ -85,9 +83,19 @@ const getSelectedTender = async (req, res) => {
   }
 }
 
+const getAllTender = async (req, res) => {
+  try {
+    const data = await Tender.find()
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 module.exports = {
   createTender,
   collectTender,
   addTender,
   getSelectedTender,
+  getAllTender,
 }
