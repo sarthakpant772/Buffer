@@ -13,7 +13,7 @@ const Navbar = () => {
         {/* upperbox */}
         <Box sx={{ height: '2.8125em' }}>
           {/* left */}
-          <Box>
+          <Box sx={{ display: 'flex', textAlign: 'center' }}>
             <Box
               sx={{
                 height: '2.81em',
@@ -24,18 +24,23 @@ const Navbar = () => {
             >
               <Typography variant="h5">Home</Typography>
             </Box>
-          </Box>
-          <Box>
-            <Typography variant="p"> val1</Typography>
-          </Box>
-          <Box>
-            <Typography variant="p"> val1</Typography>
-          </Box>
-          <Box>
-            <Typography variant="p"> val1</Typography>
-          </Box>
-          <Box>
-            <Typography variant="p"> val1</Typography>
+
+            <Box
+              sx={{
+                display: 'flex',
+              }}
+            >
+              <Typography variant="p"> val1</Typography>
+            </Box>
+            <Box>
+              <Typography variant="p"> val1</Typography>
+            </Box>
+            <Box>
+              <Typography variant="p"> val1</Typography>
+            </Box>
+            <Box>
+              <Typography variant="p"> val1</Typography>
+            </Box>
           </Box>
           {/* right:  */}
           <Box></Box>
