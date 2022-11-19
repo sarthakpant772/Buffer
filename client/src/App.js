@@ -12,6 +12,7 @@ import {
   useNavigate,
 } from 'react-router-dom'
 import AddChemicals from './components/AddChemicals'
+import Productlist from './components/Productlist'
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<Heropage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/addChemical" element={<AddChemicals />} />
+        <Route path="/productList" element={<Productlist />} />
       </Routes>
     </div>
   )

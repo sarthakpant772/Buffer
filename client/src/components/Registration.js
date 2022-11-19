@@ -55,8 +55,7 @@ const Registration = () => {
         alert('server error occured')
       } else {
         localStorage.setItem('companyId', savedData.data._id)
-        if (acType === 'BUYER') navigate('/buyerDashboard')
-        else if (acType === 'SELLER') navigate('/addChemical')
+        navigate('/productList')
       }
       // console.log(savedData.data)
     }
