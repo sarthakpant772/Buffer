@@ -11,56 +11,14 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import React, { useState } from 'react'
 
-const Registration = () => {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const [companyName, setCompanyName] = useState('')
-
-  const [confirmPassword, setConfirmPassword] = useState('')
-
-  const [phoneNumber, setPhoneNumber] = useState('')
-
-  const [acType, setAcType] = useState('BUYER')
-  const [lable, setLable] = useState(1)
+const AddChemicals = () => {
   const paperStyle = { padding: '100px 200px', width: 350, magrin: '70px auto' }
   const avatarStyle = { marginBottom: '30px', marginTop: '10px' }
   const headerStyle = { margin: 0 }
   const formStyle = { margin: 0, marginTop: '50px' }
-  const handleSubmit = async () => {
-    if (password !== confirmPassword) {
-      alert('password incorrect')
-      setPassword('')
-      setConfirmPassword('')
-    } else if (email === '' || password === '' || acType === '') {
-      alert('fill required details completely')
-    } else {
-      const savedData = await axios.post(
-        'http://localhost:5000/user/register',
-        {
-          email: email,
-          password: password,
-          companyName: companyName,
-          phoneNumber: phoneNumber,
-          acType: acType,
-        },
-      )
-      if (savedData.status === 500) {
-        alert('server error occured')
-      } else {
-        localStorage.setItem('companyId', savedData.data._id)
-        if (acType === 'BUYER') navigate('/buyerDashboard')
-        else if (acType === 'SELLER') navigate('/addChemical')
-      }
-      // console.log(savedData.data)
-    }
-  }
   return (
     <Grid align="center" marginTop="70px">
       <Paper elevation={20} style={paperStyle}>
@@ -81,17 +39,17 @@ const Registration = () => {
               fullWidth
               label="Email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              //   value={email}
+              //   onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               type="password"
               margin="dense"
               fullWidth
               label="Password"
-              value={password}
-              required
-              onChange={(e) => setPassword(e.target.value)}
+              //   value={password}
+              //   required
+              //   onChange={(e) => setPassword(e.target.value)}
             />
             <TextField
               type="password"
@@ -99,16 +57,16 @@ const Registration = () => {
               fullWidth
               label="Confirm Password"
               required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              //   value={confirmPassword}
+              //   onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <TextField
               margin="dense"
               fullWidth
               label="Company Name"
               required
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              //   value={companyName}
+              //   onChange={(e) => setCompanyName(e.target.value)}
             />
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
@@ -121,9 +79,9 @@ const Registration = () => {
                   display: 'flex',
                   flexDirection: 'row',
                 }}
-                value={acType}
-                required
-                onChange={(e) => setAcType(e.target.value)}
+                // value={acType}
+                // required
+                // onChange={(e) => setAcType(e.target.value)}
               >
                 <FormControlLabel
                   value="BUYER"
@@ -137,7 +95,7 @@ const Registration = () => {
                 />
               </RadioGroup>
             </FormControl>
-            <Button varient="contained" color="primary" onClick={handleSubmit}>
+            <Button varient="contained" color="primary">
               Register
             </Button>
           </form>
@@ -147,4 +105,4 @@ const Registration = () => {
   )
 }
 
-export default Registration
+export default AddChemicals
