@@ -3,6 +3,7 @@ const argon2 = require('argon2')
 
 const jwt = require('jsonwebtoken')
 const { use } = require('../routes/auth')
+const Cart = require('../model/Cart')
 
 const registerUser = async (req, res) => {
   password = req.body.password
@@ -16,10 +17,16 @@ const registerUser = async (req, res) => {
   })
   try {
     const savedUser = await newUser.save()
+    const addedProduct = await Cart({
+      userId: savedUser._id,
+    })
+    const savedData = await addedProduct.save()
+    const user = await User.findById(savedUser._id)
+    user.currentOrder.push(savedData._id)
     res.status(201).json(savedUser)
   } catch (error) {
-    res.status(500).json(error)
     console.log(error)
+    res.status(500).json(error)
   }
 }
 

@@ -13,5 +13,5 @@ router.put('/addProducts', addProducts)
 
 router.get('/:id', displayCart)
 
-router.put('/:id', deleteProduct)
+router.delete('/:id', deleteProduct)
 module.exports = router

@@ -1,18 +1,9 @@
 const express = require('express')
-const {
-  addChemical,
-  addNewChemical,
-  getAllChemical,
-  getChemicalOfOneCompany,
-} = require('../controller/comapny')
+const { getAllChemicals, addChemicals } = require('../controller/chemicals')
 
 const router = express.Router()
 
-router.post('/addChemical', addChemical)
-// add chemical is main
-router.put('/addNewChemical', addNewChemical)
+router.get('/getAllChemical', getAllChemicals)
 
-router.get('/getAllChemical', getAllChemical)
-
-router.get('/getComapnyChemical/:id', getChemicalOfOneCompany)
+router.post('/addChemical', addChemicals)
 module.exports = router

@@ -40,6 +40,7 @@ const addProducts = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const userId = req.body.userId
   const { id } = req.params
+
   try {
     const data = await Cart.findOneAndUpdate(
       { userId: userId },
@@ -52,7 +53,8 @@ const deleteProduct = async (req, res) => {
       },
       { safe: true, multi: false },
     )
-    res.status(200).json(data)
+    const dataFinal = await Cart.findOne({ userId: userId })
+    res.status(200).json(dataFinal)
   } catch (err) {
     console.log(err)
     res.status(500).json(err)

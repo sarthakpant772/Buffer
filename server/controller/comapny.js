@@ -53,6 +53,7 @@ const addNewChemical = async (req, res) => {
 const getAllChemical = async (req, res) => {
   try {
     const allChemical = await CompanyDetails.find()
+    
     res.status(200).json(allChemical)
   } catch (error) {
     res.status(500).json(error)

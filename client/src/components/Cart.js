@@ -1,24 +1,26 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import { useSelector, useDispatch } from 'react-redux'
-import { addItem, productAdd } from '../features/cart/cartSlice'
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { productDelete } from '../features/cart/cartSlice'
 
-const Productlist = () => {
+const Cart = () => {
   const dispatch = useDispatch()
-  const [data, setData] = useState([])
+  const [data, setData] = useState()
+  const getData = useSelector((state) => state.cart.cart)
 
   useEffect(() => {
-    fetch('http://localhost:5000/chemical/getAllChemical')
-      .then((response) => response.json())
-      .then((data) => setData(data))
-  }, [])
+    console.log(getData.products)
+    setData(getData.products)
+  }, [getData])
 
+  console.log('check', data)
   return (
     <div>
       {data &&
@@ -42,9 +44,9 @@ const Productlist = () => {
             <CardActions>
               <Button
                 size="small"
-                onClick={() => dispatch(productAdd({ item }))}
+                onClick={() => dispatch(productDelete({ item }))}
               >
-                Add to cart
+                remove
               </Button>
               <Button size="small">Learn More</Button>
             </CardActions>
@@ -54,4 +56,4 @@ const Productlist = () => {
   )
 }
 
-export default Productlist
+export default Cart

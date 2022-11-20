@@ -13,6 +13,8 @@ import {
 } from 'react-router-dom'
 import AddChemicals from './components/AddChemicals'
 import Productlist from './components/Productlist'
+import Cart from './components/Cart'
+import PreviousBuy from './components/PreviousBuy'
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/productList" element={<Productlist />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/previousBuy" element={<PreviousBuy />} />
       </Routes>
     </div>
   )

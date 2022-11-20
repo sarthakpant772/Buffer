@@ -16,8 +16,8 @@ app.use(cors())
 const authRoute = require('./routes/auth')
 app.use('/user', authRoute)
 
-const chemical = require('./routes/chemical')
-app.use('/industry', chemical)
+const company = require('./routes/company')
+app.use('/industry', company)
 
 const user = require('./routes/user')
 app.use('/getUser', user)
@@ -30,6 +30,9 @@ app.use('/cart', cart)
 
 const tender = require('./routes/tender')
 app.use('/tender', tender)
+
+const chemical = require('./routes/chemical')
+app.use('/chemical', chemical)
 
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
