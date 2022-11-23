@@ -14,6 +14,7 @@ const cartSchema = mongoose.Schema({
     },
     { timestamps: true },
   ],
+  totalCost: { type: Number, default: 0 },
 })
 
 module.exports = mongoose.model('Cart', cartSchema)

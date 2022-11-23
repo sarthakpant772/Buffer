@@ -1,3 +1,4 @@
+import { ThemeContext } from '@emotion/react'
 import {
   Button,
   Card,
@@ -6,21 +7,50 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { productDelete } from '../features/cart/cartSlice'
+import { productDelete, removeItem } from '../features/cart/cartSlice'
 
 const Cart = () => {
-  const dispatch = useDispatch()
+  var companyId = localStorage.getItem('companyId')
   const [data, setData] = useState()
-  const getData = useSelector((state) => state.cart.cart)
+  let getData = useSelector((state) => state.cart.cart)
+
+  const dispatch = useDispatch()
+
+  const handleBuy = async () => {
+    const products = { getData }
+    console.log(data)
+    try {
+      for (var i = 0; i < data.length; ++i) {
+        const previous = await axios.put(
+          'http://localhost:5000/previousBuy/addChemical',
+          {
+            userid: companyId,
+            products: {
+              name: data[i].name,
+              price: data[i].price,
+              quantity: data[i].quantity,
+            },
+          },
+        )
+      }
+      dispatch(removeItem)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      const data = await axios.put('http://localhost:5000/cart/clearCart', {
+        userId: companyId,
+      })
+      getData = data
+    }
+  }
 
   useEffect(() => {
-    console.log(getData.products)
     setData(getData.products)
   }, [getData])
 
-  console.log('check', data)
   return (
     <div>
       {data &&
@@ -52,6 +82,9 @@ const Cart = () => {
             </CardActions>
           </Card>
         ))}
+      <Button size="large" onClick={() => handleBuy()}>
+        BUY
+      </Button>
     </div>
   )
 }

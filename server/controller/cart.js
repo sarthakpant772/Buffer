@@ -21,13 +21,18 @@ const addNewProducts = async (req, res) => {
 }
 
 const addProducts = async (req, res) => {
+  const id = req.body.userId
+  console.log(req.body.products.price)
   try {
+    const Cdata = await Cart.findOne({ userId: id })
     const data = await Cart.findOneAndUpdate(
       { userId: req.body.userId },
       {
         $push: {
           products: req.body.products,
         },
+        totalCost:
+          parseInt(Cdata.totalCost) + parseInt(req.body.products.price),
       },
     )
     res.status(200).json(data)
@@ -42,6 +47,8 @@ const deleteProduct = async (req, res) => {
   const { id } = req.params
 
   try {
+    const Cdata = await Cart.findOne({ userId: userId })
+
     const data = await Cart.findOneAndUpdate(
       { userId: userId },
       {
@@ -50,6 +57,8 @@ const deleteProduct = async (req, res) => {
             _id: id,
           },
         },
+        totalCost:
+          parseInt(Cdata.totalCost) - parseInt(req.body.products.price),
       },
       { safe: true, multi: false },
     )
@@ -72,9 +81,29 @@ const displayCart = async (req, res) => {
   }
 }
 
+const clearCart = async (req, res) => {
+  try {
+    const userId = req.body.userId
+    const data = await Cart.findOneAndUpdate(
+      { userId: userId },
+      {
+        products: [],
+      },
+      { safe: true, multi: false },
+    )
+    const dataFinal = await Cart.findOne({ userId: userId })
+    res.status(200).json(dataFinal)
+  } catch (err) {
+    console.log(err)
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 module.exports = {
   addNewProducts,
   displayCart,
   addProducts,
   deleteProduct,
+  clearCart,
 }

@@ -4,9 +4,9 @@ const previousBuySchema = mongoose.Schema({
   userid: { type: String, reqired: true, unique: true },
   products: [
     {
-      productName: { type: String, reqired: true },
-      productQuantity: { type: Number, default: 0 },
-      productPrice: { type: Number, default: 0 },
+      name: { type: String },
+      quantity: { type: String, default: 0 },
+      price: { type: String, default: 0 },
     },
   ],
   totalCost: { type: Number, default: 0 },

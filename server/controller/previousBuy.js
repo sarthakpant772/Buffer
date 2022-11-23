@@ -3,6 +3,7 @@ const PreviousBuy = require('../model/PreviousBuy')
 const User = require('../model/User')
 const createPreviousBuy = async (req, res) => {
   const data = await PreviousBuy({
+    userid: req.body.userid,
     products: req.body.products,
     totalCost: req.body.totalCost,
   })
@@ -20,7 +21,7 @@ const createPreviousBuy = async (req, res) => {
 
 const addChemical = async (req, res) => {
   try {
-    console.log(req.body)
+    console.log('check add po chemical')
     const data = await PreviousBuy.findOneAndUpdate(
       { userid: req.body.userid },
       {
@@ -37,4 +38,15 @@ const addChemical = async (req, res) => {
   }
 }
 
-module.exports = { createPreviousBuy, addChemical }
+const getPreviousChemicals = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const data = await PreviousBuy.findOne({ userid: id })
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+module.exports = { createPreviousBuy, addChemical, getPreviousChemicals }

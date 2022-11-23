@@ -4,6 +4,7 @@ const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 const { use } = require('../routes/auth')
 const Cart = require('../model/Cart')
+const PreviousBuy = require('../model/PreviousBuy')
 
 const registerUser = async (req, res) => {
   password = req.body.password
@@ -20,7 +21,12 @@ const registerUser = async (req, res) => {
     const addedProduct = await Cart({
       userId: savedUser._id,
     })
+    const createPreaviousBuy = await PreviousBuy({
+      userid: savedUser._id,
+    })
     const savedData = await addedProduct.save()
+    const savedPreviousBuy = await createPreaviousBuy.save()
+    console.log(savedPreviousBuy)
     const user = await User.findById(savedUser._id)
     user.currentOrder.push(savedData._id)
     res.status(201).json(savedUser)

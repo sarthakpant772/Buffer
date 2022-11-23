@@ -5,9 +5,12 @@ import { textAlign } from '@mui/system'
 import { useSelector } from 'react-redux'
 const Navbar = () => {
   const [number, setNumber] = useState(0)
+  const [totalCost, setTotalCost] = useState(0)
+  const tempCost = useSelector((state) => state.cart.totalCost)
   const noItem = useSelector((state) => state.cart.count)
   useEffect(() => {
     setNumber(noItem)
+    setTotalCost(tempCost)
   }, [noItem])
 
   return (
@@ -162,6 +165,7 @@ const Navbar = () => {
 
           {/*right box */}
           <Box>
+            <Typography>{totalCost} </Typography>
             <Badge badgeContent={number} color="primary">
               <ShoppingCartIcon></ShoppingCartIcon>
             </Badge>

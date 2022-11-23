@@ -4,6 +4,7 @@ const {
   displayCart,
   addNewProducts,
   deleteProduct,
+  clearCart,
 } = require('../controller/cart')
 const router = express.Router()
 // post
@@ -14,4 +15,6 @@ router.put('/addProducts', addProducts)
 router.get('/:id', displayCart)
 
 router.delete('/:id', deleteProduct)
+router.put('/clearCart', clearCart)
+
 module.exports = router

@@ -7,6 +7,7 @@ const initialState = {
   count: 0,
   totalValue: 0,
   cart: [],
+  totalCost: 0,
   status: null,
 }
 
@@ -14,18 +15,23 @@ export const productDelete = createAsyncThunk(
   'cart/productDelete',
   async (item) => {
     var companyId = localStorage.getItem('companyId')
-    console.log(companyId)
-    console.log(item.item._id)
     try {
       const responce = await axios.delete(
         `http://localhost:5000/cart/${item.item._id}`,
         {
-          data: { userId: companyId },
+          data: {
+            userId: companyId,
+            products: {
+              name: item.item.name,
+              price: item.item.price,
+              quantity: item.item.quantity,
+            },
+          },
         },
       )
 
-      console.log(responce.data.products)
-      return responce.data.products
+      // console.log(responce.data)
+      return responce.data
     } catch (err) {
       console.log(err)
     }
@@ -41,7 +47,6 @@ export const productFetch = createAsyncThunk('cart/productFetch', async () => {
 export const productAdd = createAsyncThunk('cart/productAdd', async (item) => {
   var companyId = localStorage.getItem('companyId')
 
-  // console.log(item.item)
   try {
     const responce = await axios.put('http://localhost:5000/cart/addProducts', {
       userId: companyId,
@@ -51,8 +56,8 @@ export const productAdd = createAsyncThunk('cart/productAdd', async (item) => {
         quantity: item.item.quantity,
       },
     })
-
-    return responce.data.products
+    console.log(responce)
+    return responce.data
   } catch (error) {
     console.log(error)
   }
@@ -67,8 +72,8 @@ export const cartSlice = createSlice({
       console.log(state.count)
     },
     removeItem: (state, action) => {
-      state.count -= 1
-      state.totalValue -= action.payload
+      state.count = 0
+      state.totalValue = null
     },
   },
   extraReducers: {
@@ -77,6 +82,7 @@ export const cartSlice = createSlice({
       // console.log(action.payload)
       var count = Object.keys(action.payload.products).length
       state.count = count
+      state.totalCost = action.payload.totalCost
       state.cart = action.payload
     },
     [productFetch.pending]: (state, action) => {
@@ -88,11 +94,14 @@ export const cartSlice = createSlice({
     [productAdd.fulfilled]: (state, action) => {
       state.status = 'fulfilled'
       state.count = state.count + 1
-      state.cart = action.payload
+
+      state.totalCost = action.payload.totalCost
+      state.cart = action.payload.products
     },
     [productDelete.fulfilled]: (state, action) => {
       state.status = 'fulfilled'
       state.count = state.count - 1
+      state.totalCost = action.payload.totalCost
       state.cart = action.payload
     },
   },
