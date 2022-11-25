@@ -2,10 +2,11 @@ import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 import background from '../images/heroBack.png'
 import Navbar from './Navbar'
-import heroMain from '../images/heroMain.png'
+import heroMain from '../images/heroMain.gif'
 import outlook from '../images/outlook.svg'
 import gmail from '../images/gmail.svg'
 import iosMail from '../images/iosMail.svg'
+import { Link } from 'react-router-dom'
 const Heropage = () => {
   return (
     <div>
@@ -134,24 +135,27 @@ const Heropage = () => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Button
-                    sx={{
-                      marginTop: '2em',
-                      height: '3.50em',
-                      width: '12.75em',
-                      backgroundColor: '#4B75BE',
-                      borderRadius: '2em',
-                    }}
-                  >
-                    <Typography
-                      variant="subtitle1"
+                  <Link to="/register">
+                    <Button
                       sx={{
-                        color: 'White',
+                        textDecoration: 'none',
+                        marginTop: '2em',
+                        height: '3.50em',
+                        width: '12.75em',
+                        backgroundColor: '#4B75BE',
+                        borderRadius: '2em',
                       }}
                     >
-                      Register Here
-                    </Typography>
-                  </Button>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          color: 'White',
+                        }}
+                      >
+                        Register Here
+                      </Typography>
+                    </Button>
+                  </Link>
                 </Box>
                 <Typography variant="subtitle2" sx={{}}>
                   Trusted by many Industries
@@ -162,6 +166,8 @@ const Heropage = () => {
           {/* right image */}
           <Box
             sx={{
+              margin: '1em',
+              marginRight: '3em',
               width: '50%',
               height: '51em',
               zIndex: '0',
@@ -171,7 +177,7 @@ const Heropage = () => {
           >
             <Box
               component="img"
-              sx={{ width: '70', position: 'absolute', height: '49em' }}
+              sx={{ width: '50%', position: 'absolute', height: '39em' }}
               src={heroMain}
             />
           </Box>

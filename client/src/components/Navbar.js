@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { Badge, Box, Button, Paper, Typography } from '@mui/material'
+import {
+  Badge,
+  Box,
+  Button,
+  makeStyles,
+  Paper,
+  Typography,
+} from '@mui/material'
 import { textAlign } from '@mui/system'
 import { useSelector } from 'react-redux'
 
 import logo from '../images/logo.svg'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [number, setNumber] = useState(0)
@@ -122,24 +130,26 @@ const Navbar = () => {
               </Typography>
             </Button>
             {/*   Login  */}
-            <Button
-              sx={{
-                marginLeft: '2em',
-                height: '2.50em',
-                width: '9.75em',
-                backgroundColor: '#4B75BE',
-                borderRadius: '2em',
-              }}
-            >
-              <Typography
-                variant="subtitle1"
+            <Link to="/login">
+              <Button
                 sx={{
-                  color: 'White',
+                  marginLeft: '2em',
+                  height: '2.50em',
+                  width: '9.75em',
+                  backgroundColor: '#4B75BE',
+                  borderRadius: '2em',
                 }}
               >
-                Login
-              </Typography>
-            </Button>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: 'White',
+                  }}
+                >
+                  Login
+                </Typography>
+              </Button>
+            </Link>
           </Box>
         </Box>
         {/* lower */}
