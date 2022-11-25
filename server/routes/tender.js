@@ -6,10 +6,11 @@ const {
   getSelectedTender,
   getAllTender,
 } = require('../controller/tender')
+const { verifyBuyer } = require('../middleware/verifyBuyer')
 
 const router = express.Router()
 
-router.put('/addTender/:product_id', addTender)
+router.put('/addTender/:product_id', verifyBuyer, addTender)
 router.post('/createTender', createTender)
 router.get('/collectTender/:product_id', collectTender)
 router.get('/getTenderData/:productId', getSelectedTender)

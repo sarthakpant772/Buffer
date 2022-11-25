@@ -18,6 +18,8 @@ import PreviousBuy from './components/PreviousBuy'
 import { createTheme, ThemeProvider } from '@mui/material'
 import HomePage from './components/HomePage'
 import Tender from './components/Tender'
+import DashBoard from './components/DashBoard'
+import AddProducts from './components/AddProducts'
 
 function App() {
   const theme = createTheme({
@@ -80,7 +82,9 @@ function App() {
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/previousBuy" element={<PreviousBuy />} />
-          <Route path="/tender" element={<Tender />} />
+          <Route path="dashboard" element={<DashBoard />}>
+            <Route path="seller" element={<AddProducts />} />
+          </Route>
         </Routes>
       </ThemeProvider>
     </div>

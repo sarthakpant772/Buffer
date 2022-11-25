@@ -76,7 +76,7 @@ const collectTender = async (req, res) => {
 const getSelectedTender = async (req, res) => {
   const { productId } = req.params
   try {
-    const data = await Tender.findOne({ product_id: productId })
+    const data = await Tender.findOne({ productId: productId })
     res.status(200).json(data)
   } catch (err) {
     res.status(500).json(err)

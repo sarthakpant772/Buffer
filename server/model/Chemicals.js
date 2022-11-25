@@ -5,6 +5,7 @@ const chemicalSchema = mongoose.Schema({
   name: { type: String, unique: true },
   quantity: String,
   price: String,
+  isTender: { type: String, default: false },
 })
 
 module.exports = mongoose.model('Chemicals', chemicalSchema)
