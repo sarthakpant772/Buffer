@@ -17,6 +17,7 @@ import Cart from './components/Cart'
 import PreviousBuy from './components/PreviousBuy'
 import { createTheme, ThemeProvider } from '@mui/material'
 import HomePage from './components/HomePage'
+import Tender from './components/Tender'
 
 function App() {
   const theme = createTheme({
@@ -79,6 +80,7 @@ function App() {
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/previousBuy" element={<PreviousBuy />} />
+          <Route path="/tender" element={<Tender />} />
         </Routes>
       </ThemeProvider>
     </div>
