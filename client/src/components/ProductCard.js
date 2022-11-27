@@ -21,34 +21,23 @@ import { margin } from '@mui/system'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const TenderCard = (item) => {
+const ProductCard = (item) => {
   const navigate = useNavigate()
-
+  // console.log(item.item.price)
   const [Price, setPrice] = useState(parseInt(item.item.price))
-
-  const handleDecrement = () => {
-    setPrice((prevCount) => prevCount - 100)
-  }
-
-  const handleIncrement = () => {
-    setPrice((prevCount) => prevCount + 100)
-  }
 
   const makeTender = async () => {
     try {
+      console.log(item.item._id)
       var companyId = localStorage.getItem('companyId')
 
-      const data = await axios.put(
-        `http://localhost:5000/tender/addTender/${item.item._id}`,
+      const data = await axios.get(
+        `http://localhost:5000/tender/collectTender/${item.item._id}`,
         {
-          allTenders: {
-            name: item.item.name,
-            price: Price.toString(),
-            tenderCompanyId: companyId,
-          },
+          companyId: companyId,
         },
       )
-      // console.log(data)
+      console.log(data)
     } catch (err) {
       if (err.response.data === 'err') {
         alert('Already Applied to this porduct')
@@ -68,7 +57,7 @@ const TenderCard = (item) => {
           width: '20.625em',
           flexDirection: 'column',
           margin: 'auto',
-          marginTop: '10em',
+          // marginTop: '10em',
           alignItems: 'center',
         }}
       >
@@ -87,25 +76,10 @@ const TenderCard = (item) => {
             bottom: '0.07em',
           }}
         >
-          <IconButton
-            aria-label="delete"
-            aria-color="secondary"
-            onClick={handleDecrement}
-          >
-            <RemoveCircleIcon />
-          </IconButton>
-
           <div className="form-control text -center">{Price}</div>
-          <IconButton
-            aria-label="delete"
-            aria-color="primary"
-            onClick={handleIncrement}
-          >
-            <AddCircleIcon />
-          </IconButton>
 
           <Button size="small" onClick={() => makeTender()}>
-            Send Your Tender
+            collect Tender
           </Button>
         </CardActions>
 
@@ -119,4 +93,4 @@ const TenderCard = (item) => {
   )
 }
 
-export default TenderCard
+export default ProductCard

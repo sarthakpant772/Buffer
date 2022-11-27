@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const tenderSchema = mongoose.Schema(
   {
     productId: String,
-    ownTenderId: { type: String },
+    ownerId: { type: String },
+    isClosed: { type: String, default: 'false' },
     allTenders: {
       type: [
         {

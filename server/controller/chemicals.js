@@ -6,6 +6,7 @@ const addChemicals = async (req, res) => {
     name: req.body.name,
     quantity: req.body.quantity,
     price: req.body.price,
+    grade: req.body.grade,
     isTender: req.body.isTender,
   })
   try {
@@ -16,16 +17,8 @@ const addChemicals = async (req, res) => {
   }
 }
 
+// get all chemicals
 const getAllChemicals = async (req, res) => {
-  try {
-    const data = await Chemicals.find({ isTender: 'true' })
-    res.status(200).json(data)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-}
-
-const getTenderChemicals = async (req, res) => {
   try {
     const data = await Chemicals.find({ isTender: 'false' })
     res.status(200).json(data)
@@ -34,8 +27,46 @@ const getTenderChemicals = async (req, res) => {
   }
 }
 
+const getSpecificCompanyChemiacl = async (req, res) => {
+  const { id } = req.params
+  try {
+    const data = await Chemicals.find({
+      companyId: id,
+      isTender: 'true',
+      isSolved: 'false',
+    })
+    res.status(200).json(data)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+const getTenderChemicals = async (req, res) => {
+  try {
+    const data = await Chemicals.find({ isTender: 'true', isSolved: 'false' })
+    console.log(data)
+    // check and relod data
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+const getProductChemical = async (req, res) => {
+  const { id } = req.params
+  try {
+    const data = await Chemicals.findById(id)
+    res.status(200).json(data)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   getAllChemicals,
   addChemicals,
   getTenderChemicals,
+  getSpecificCompanyChemiacl,
+  getProductChemical,
 }

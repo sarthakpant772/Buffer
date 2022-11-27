@@ -35,6 +35,9 @@ app.use('/tender', tender)
 const chemical = require('./routes/chemical')
 app.use('/chemical', chemical)
 
+const CollectedTender = require('./routes/CompletedTender')
+app.use('/completed', CollectedTender)
+
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
   'mongodb+srv://buffer:buffer@cluster0.o7wpovx.mongodb.net/?retryWrites=true&w=majority'

@@ -54,6 +54,15 @@ const loginUser = async (req, res) => {
   }
 }
 
+const getUserById = async (req, res) => {
+  const { id } = req.params
+  try {
+    const data = await User.findById(id)
+    res.status(200).json(data)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 // const getSelectedUser = async(req )
 
-module.exports = { registerUser, loginUser }
+module.exports = { registerUser, loginUser, getUserById }

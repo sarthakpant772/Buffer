@@ -7,8 +7,6 @@ const DashBoard = () => {
   return (
     <div>
       <FloatBar />
-
-      <Outlet />
     </div>
   )
 }

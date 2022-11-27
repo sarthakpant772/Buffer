@@ -20,6 +20,11 @@ import HomePage from './components/HomePage'
 import Tender from './components/Tender'
 import DashBoard from './components/DashBoard'
 import AddProducts from './components/AddProducts'
+import BuyerNav from './components/BuyerNav'
+import SellerNav from './components/SellerNav'
+
+import GetProducts from './components/CollectTender'
+import FinalTenders from './components/FinalTenders'
 
 function App() {
   const theme = createTheme({
@@ -83,7 +88,17 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/previousBuy" element={<PreviousBuy />} />
           <Route path="dashboard" element={<DashBoard />}>
-            <Route path="seller" element={<AddProducts />} />
+            <Route path="buyer" element={<BuyerNav />}>
+              <Route path="allProducts" element={<Productlist />} />
+              <Route path="allTender" element={<Tender />} />
+            </Route>
+            <Route path="seller" element={<SellerNav />}>
+              {/* Add products */}
+              <Route path="addProduct" element={<AddProducts />} />
+              {/* collect Tender */}
+              <Route path="addTender" element={<GetProducts />} />
+              <Route path="collectedTender" element={<FinalTenders />} />
+            </Route>
           </Route>
         </Routes>
       </ThemeProvider>

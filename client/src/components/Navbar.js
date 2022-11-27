@@ -114,21 +114,23 @@ const Navbar = () => {
                 AboutUs
               </Typography>
             </Button>
-            <Button
-              sx={{
-                height: '2.50em',
-                width: '13em',
-              }}
-            >
-              <Typography
-                variant="subtitle1"
+            <Link to="/dashboard/buyer/allProducts">
+              <Button
                 sx={{
-                  color: '#333333',
+                  height: '2.50em',
+                  width: '13em',
                 }}
               >
-                Knowladge Base
-              </Typography>
-            </Button>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: '#333333',
+                  }}
+                >
+                  Dashboard
+                </Typography>
+              </Button>
+            </Link>
             {/*   Login  */}
             <Link to="/login">
               <Button
