@@ -15,7 +15,7 @@ const Features = () => {
       <Box
         sx={{
           width: '100%',
-          height: '70vh',
+          
 
           display: 'flex',
           flexDirection: 'column',
@@ -219,6 +219,8 @@ const Features = () => {
               </Typography>
             </Box>
           </Box>
+
+
           {/* 4 */}
           <Box
             sx={{
