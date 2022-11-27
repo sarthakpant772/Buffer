@@ -3,9 +3,9 @@ const {
   createOrder,
   paymentCallBack,
   getLogo,
+  checkout,
 } = require('../controller/payment')
 const router = express.Router()
-router.route('/checkout').post(checkout)
 
-router.route('/paymentverification').post(paymentVerification)
+router.route('/checkout').post(checkout)
 module.exports = router

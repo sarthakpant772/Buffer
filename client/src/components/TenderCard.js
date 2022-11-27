@@ -73,7 +73,7 @@ const TenderCard = (item) => {
         }}
       >
         <CardMedia
-          image={img1}
+          image={require(`../images/productImg/${item.item.name}.png`)}
           sx={{
             component: 'img',
             height: '16.875em',

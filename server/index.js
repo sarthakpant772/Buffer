@@ -1,10 +1,17 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const Razorpay = require('razorpay')
 
 const app = express()
 
 const jwt = require('jsonwebtoken')
+
+const instance = new Razorpay({
+  key_id: process.env.KEY_ID,
+  key_secret: process.env.KEY_SECRET,
+})
 
 app.use(express.json())
 
@@ -38,6 +45,9 @@ app.use('/chemical', chemical)
 const CollectedTender = require('./routes/CompletedTender')
 app.use('/completed', CollectedTender)
 
+const Payment = require('./routes/payment')
+app.use('/payment', Payment)
+
 const PORT = process.env.PORT || 5000
 const MONGO_URL =
   'mongodb+srv://buffer:buffer@cluster0.o7wpovx.mongodb.net/?retryWrites=true&w=majority'
@@ -48,3 +58,5 @@ mongoose.connect(MONGO_URL, () => {
     console.log('server is running at port 5000')
   })
 })
+
+module.exports = { instance }
