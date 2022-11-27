@@ -2,16 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const Razorpay = require('razorpay')
+
 
 const app = express()
 
 const jwt = require('jsonwebtoken')
 
-const instance = new Razorpay({
-  key_id: process.env.KEY_ID,
-  key_secret: process.env.KEY_SECRET,
-})
 
 app.use(express.json())
 
@@ -59,4 +55,4 @@ mongoose.connect(MONGO_URL, () => {
   })
 })
 
-module.exports = { instance }
+

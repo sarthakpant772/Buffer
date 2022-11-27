@@ -88,6 +88,7 @@ const clearCart = async (req, res) => {
       { userId: userId },
       {
         products: [],
+        totalCost: 1,
       },
       { safe: true, multi: false },
     )
