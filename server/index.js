@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 
 const app = express()
 
-const jwt = require('jsonwebtoken')
 
 
 app.use(express.json())

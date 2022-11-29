@@ -1,7 +1,7 @@
 const User = require('../model/User')
 const argon2 = require('argon2')
 
-const jwt = require('jsonwebtoken')
+
 const { use } = require('../routes/auth')
 const Cart = require('../model/Cart')
 const PreviousBuy = require('../model/PreviousBuy')
