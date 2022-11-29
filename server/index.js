@@ -6,7 +6,6 @@ const Razorpay = require('razorpay')
 
 const app = express()
 
-const jwt = require('jsonwebtoken')
 
 const instance = new Razorpay({
   key_id: process.env.KEY_ID,

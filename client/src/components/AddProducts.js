@@ -39,6 +39,71 @@ const currencies = [
     value: 'nitric Acid',
     label: 'nitric Acid',
   },
+  {
+    value: 'Sulfuric Acid (H2SO4)',
+    label: 'Sulfuric Acid (H2SO4)',
+  },
+  {
+    value: 'Nitrogen (N2)',
+    label: 'Nitrogen (N2)',
+  },
+  {
+    value: 'Ethylene (C2H4)',
+    label: 'Ethylene (C2H4)',
+  },
+  {
+    value: 'Oxygen (O2)',
+    label: 'Oxygen (O2)',
+  },
+  {
+    value: 'Propylene (C3H6)',
+    label: 'Propylene (C3H6)',
+  },
+  {
+    value: 'Chlorine (Cl2)',
+    label: 'Chlorine (Cl2)',
+  },
+  {
+    value: 'Ethylene Dichloride (C2H2Cl2)',
+    label: 'Ethylene Dichloride (C2H2Cl2)',
+  },
+  
+  {
+    value: 'Phosphoric Acid (H3PO4)',
+    label: 'Phosphoric Acid (H3PO4)',
+  },
+   {
+    value: 'Ammonia (NH3)',
+    label: 'Ammonia (NH3)',
+  },
+   {
+    value: 'Sodium Hydroxide (NaOH)',
+    label: 'Sodium Hydroxide (NaOH)',
+  },
+   {
+    value: 'Sodium carbonate',
+    label: 'Sodium carbonate',
+  },
+   {
+    value: 'Sodium silicate',
+    label: 'Sodium silicate',
+  },
+   {
+    value: 'Aluminum sulfate',
+    label: 'Aluminum sulfate',
+  },
+   {
+    value: 'Urea',
+    label: 'Urea',
+  },
+   {
+    value: 'Potash',
+    label: 'Potash',
+  },
+   {
+    value: 'Titanium dioxide',
+    label: 'Titanium dioxide',
+  },
 ]
 const Grade = [
   {
