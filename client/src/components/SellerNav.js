@@ -4,6 +4,7 @@ import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
 const SellerNav = () => {
+
   return (
     <div>
       <Box
@@ -20,17 +21,25 @@ const SellerNav = () => {
         }}
       >
         <Link to="addTender">
-          <Button variant="outlined" size="medium">
+          <Button sx={{ height: '100%' }} variant="outlined" size="medium">
             Check Tender
           </Button>
         </Link>
         <Link to="addProduct">
-          <Button variant="outlined" size="">
+          <Button
+            sx={{ height: '100%', marginLeft: '1em' }}
+            variant="outlined"
+            size=""
+          >
             ADD CHEMICALS
           </Button>
         </Link>
         <Link to="collectedTender">
-          <Button variant="outlined" size="">
+          <Button
+            sx={{ height: '100%', marginLeft: '1em' }}
+            variant="outlined"
+            size=""
+          >
             Collected Tenders
           </Button>
         </Link>

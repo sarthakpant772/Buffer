@@ -7,10 +7,12 @@ import { Provider } from 'react-redux'
 import { store } from './app/store'
 import { productFetch } from './features/cart/cartSlice'
 import { getPreviousBuy } from './features/previousBuy/previousBuySlice'
+import { checkLoggedIn } from './features/user/userSlice'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 store.dispatch(productFetch())
 store.dispatch(getPreviousBuy())
+store.dispatch(checkLoggedIn())
 root.render(
   <React.StrictMode>
     <Router>

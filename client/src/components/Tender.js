@@ -2,7 +2,7 @@ import { Box, colors, Grid, Paper, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import TenderCard from './TenderCard'
-
+import empty from '../images/empty.gif'
 const Tender = () => {
   const [data, setData] = useState()
 
