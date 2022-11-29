@@ -25,6 +25,7 @@ import SellerNav from './components/SellerNav'
 
 import GetProducts from './components/CollectTender'
 import FinalTenders from './components/FinalTenders'
+import Payment from './components/Payment'
 
 function App() {
   const theme = createTheme({
@@ -100,6 +101,8 @@ function App() {
               <Route path="collectedTender" element={<FinalTenders />} />
             </Route>
           </Route>
+
+          <Route path="payment" element={<Payment />} />
         </Routes>
       </ThemeProvider>
     </div>

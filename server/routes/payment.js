@@ -7,5 +7,6 @@ const {
 } = require('../controller/payment')
 const router = express.Router()
 
-router.route('/checkout').post(checkout)
+router.post('/razorpay/:id', checkout)
+
 module.exports = router
