@@ -22,20 +22,26 @@ const FloatBar = () => {
             height: '2.5em',
             flexDirection: 'row',
             marginTop: '3em',
+            marginBottom: '1em',
           }}
         >
           <Link to="buyer/allProducts">
             <Button
+              variant="outlined"
+              size="large"
               sx={{
                 size: 'medium',
-                borderBottom: 'none',
               }}
             >
               BUYER
             </Button>
           </Link>
           <Link to="seller/addTender">
-            <Button variant="outlined" size="">
+            <Button
+              sx={{ height: '100%', marginLeft: '1em' }}
+              variant="outlined"
+              size="large"
+            >
               SELLER
             </Button>
           </Link>

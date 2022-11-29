@@ -9,7 +9,12 @@ import {
 import axios from 'axios'
 import React, { useState } from 'react'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import { useDispatch } from 'react-redux'
+import { loggedIn } from '../features/user/userSlice'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = async () => {
@@ -26,6 +31,10 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err)
+    } finally {
+      console.log('check')
+      dispatch(loggedIn())
+      navigate('/')
     }
   }
   const paperStyle = {

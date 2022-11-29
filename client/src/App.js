@@ -90,6 +90,7 @@ function App() {
           <Route path="/previousBuy" element={<PreviousBuy />} />
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
+              <Route path="cart" element={<Cart />} />
               <Route path="allProducts" element={<Productlist />} />
               <Route path="allTender" element={<Tender />} />
             </Route>

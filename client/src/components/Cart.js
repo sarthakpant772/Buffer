@@ -1,5 +1,6 @@
 import { ThemeContext } from '@emotion/react'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -112,42 +113,115 @@ const Cart = () => {
 
   useEffect(() => {
     setData(getData.products)
-  }, [getData])
+  }, [getData, data])
+  const price = useSelector((state) => state.cart.totalCost)
 
   return (
     <div>
-      {data &&
-        data.map((item) => (
-          <Card sx={{ maxWidth: 345 }} key={item._id}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                size="small"
-                onClick={() => dispatch(productDelete({ item }))}
-              >
-                remove
-              </Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
-          </Card>
-        ))}
-      <Button size="large" onClick={() => handleBuy()}>
-        BUY
-      </Button>
+      <Box sx={{ width: '100%', minHeight: '80vh', display: 'flex' }}>
+        <Box sx={{ width: '70%' }}>
+          {data &&
+            data.map((item) => (
+              <Card sx={{ maxWidth: 345 }} key={item._id}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="140"
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {item.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    onClick={() => dispatch(productDelete({ item }))}
+                  >
+                    remove
+                  </Button>
+                  <Button size="small">Learn More</Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Box>
+        <Box
+          sx={{
+            borderLeftWidth: '4px',
+            borderColor: 'black',
+            height: '35em',
+            width: '30%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              height: '30em',
+              width: '90%',
+              marginTop: '1em',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Box>
+              <Typography variant="h3">Complete Your order</Typography>
+              <hr></hr>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h2">Total Cost:</Typography>
+              <Typography variant="h4">+{price}</Typography>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h2">Total Tax:</Typography>
+              <Typography variant="h4">+33</Typography>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h2">Total Discount:</Typography>
+              <Typography variant="h4">-33</Typography>
+            </Box>
+            <hr />
+            <Box
+              sx={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography variant="h2">Final Price:</Typography>
+              <Typography variant="h4">{price !== 0 ? price : 0}</Typography>
+            </Box>
+          </Box>
+          <Button size="large" onClick={() => handleBuy()}>
+            BUY
+          </Button>
+        </Box>
+      </Box>
     </div>
   )
 }
