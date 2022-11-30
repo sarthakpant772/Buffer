@@ -73,7 +73,7 @@ const Cart = () => {
   }
 
   const [data, setData] = useState()
-  let getData = useSelector((state) => state.cart.cart)
+  const getData = useSelector((state) => state.cart.cart)
 
   const dispatch = useDispatch()
 
@@ -111,9 +111,18 @@ const Cart = () => {
     }
   }
 
+  const getAllData = async () => {
+    var companyId = localStorage.getItem('companyId')
+    const responce = await axios.get(`http://localhost:5000/cart/${companyId}`)
+    setData(responce)
+  }
+
   useEffect(() => {
+    // window.location.reload()
+    console.log(getData)
     setData(getData.products)
-  }, [getData, data])
+    // getAllData()
+  }, [data, getData])
   const price = useSelector((state) => state.cart.totalCost)
 
   return (

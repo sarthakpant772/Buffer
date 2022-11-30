@@ -8,6 +8,7 @@ const addNewProducts = async (req, res) => {
   const addedProduct = await Cart({
     userId: req.body.userId,
     products: req.body.products,
+    totalCost: '0',
   })
   try {
     const savedData = await addedProduct.save()
@@ -20,11 +21,14 @@ const addNewProducts = async (req, res) => {
   }
 }
 
+//  check thissssss
 const addProducts = async (req, res) => {
   const id = req.body.userId
-  console.log(req.body.products.price)
+  console.log(req.body)
+  console.log('price', req.body.products.price)
   try {
     const Cdata = await Cart.findOne({ userId: id })
+    console.log('data', Cdata.totalCost)
     const data = await Cart.findOneAndUpdate(
       { userId: req.body.userId },
       {
@@ -88,7 +92,7 @@ const clearCart = async (req, res) => {
       { userId: userId },
       {
         products: [],
-        totalCost: 1,
+        totalCost: 0,
       },
       { safe: true, multi: false },
     )

@@ -3,24 +3,16 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import TenderCard from './TenderCard'
 import empty from '../images/empty.gif'
-const Tender = () => {
-  const [data, setData] = useState()
-
-  const getData = async () => {
-    try {
-      const tempData = await axios.get(
-        'http://localhost:5000/chemical/getTenderData',
-      )
-      // console.log(tempData.data)
-      console.log(tempData)
-      setData(tempData.data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+import { useDispatch } from 'react-redux'
+import ChemicalCard from './ChemicalCard'
+const ChemicalPage = () => {
+  const dispatch = useDispatch()
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    getData()
+    fetch('http://localhost:5000/chemical/getAllChemical')
+      .then((response) => response.json())
+      .then((data) => setData(data))
   }, [])
 
   return (
@@ -50,7 +42,7 @@ const Tender = () => {
             marginLeft: '1em',
           }}
         >
-          TENDER
+          Product Page
         </Typography>
       </Box>
 
@@ -76,7 +68,7 @@ const Tender = () => {
         >
           <Box marginBottom={'3em'}>
             <Grid container spacing={3}>
-              {data && data.map((item) => <TenderCard item={item} />)}
+              {data && data.map((item) => <ChemicalCard item={item} />)}
             </Grid>
           </Box>
         </Box>
@@ -85,4 +77,4 @@ const Tender = () => {
   )
 }
 
-export default Tender
+export default ChemicalPage

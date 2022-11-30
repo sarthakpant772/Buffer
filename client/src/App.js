@@ -26,6 +26,7 @@ import SellerNav from './components/SellerNav'
 import GetProducts from './components/CollectTender'
 import FinalTenders from './components/FinalTenders'
 import Payment from './components/Payment'
+import ChemicalPage from './components/ChemicalPage'
 
 function App() {
   const theme = createTheme({
@@ -91,7 +92,7 @@ function App() {
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
               <Route path="cart" element={<Cart />} />
-              <Route path="allProducts" element={<Productlist />} />
+              <Route path="allProducts" element={<ChemicalPage />} />
               <Route path="allTender" element={<Tender />} />
             </Route>
             <Route path="seller" element={<SellerNav />}>

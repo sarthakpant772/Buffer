@@ -55,7 +55,7 @@ const Registration = () => {
         alert('server error occured')
       } else {
         localStorage.setItem('companyId', savedData.data._id)
-        navigate('/productList')
+        navigate('/')
       }
       // console.log(savedData.data)
     }
@@ -136,7 +136,11 @@ const Registration = () => {
                 />
               </RadioGroup>
             </FormControl>
-            <Button varient="contained" color="primary" onClick={handleSubmit}>
+            <Button
+              varient="contained"
+              color="primary"
+              onClick={() => handleSubmit()}
+            >
               Register
             </Button>
           </form>

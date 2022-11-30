@@ -12,9 +12,10 @@ import { textAlign } from '@mui/system'
 import { useSelector } from 'react-redux'
 
 import logo from '../images/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const count = useSelector((state) => state.user.islogged)
   const [loggedIn, setLoggedIn] = useState(false)
   const [number, setNumber] = useState(0)
@@ -25,6 +26,7 @@ const Navbar = () => {
   const handleClear = () => {
     localStorage.clear()
     setLoggedIn(false)
+    navigate('/')
     window.location.reload()
   }
   useEffect(() => {
