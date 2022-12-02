@@ -90,6 +90,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/tendernew" element={<TenderNew />} />
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
               <Route path="previousBuy" element={<PreviousOrderPage />} />

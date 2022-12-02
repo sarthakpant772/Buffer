@@ -60,13 +60,15 @@ const Navbar = () => {
               height: '100%',
             }}
           >
-            <Box
-              component="img"
-              sx={{
-                height: '3em',
-              }}
-              src={logo}
-            />
+            <Link to="/">
+              <Box
+                component="img"
+                sx={{
+                  height: '3em',
+                }}
+                src={logo}
+              />
+            </Link>
           </Box>
           {/* right */}
 
@@ -80,25 +82,24 @@ const Navbar = () => {
             }}
           >
             {/*  */}
-            <Link to='/tendernew'>
-            <Button
-              sx={{
-                height: '2.50em',
-                width: '10em',
-              }}
-            >
-              <Typography
-                variant="subtitle1"
+            <Link to="/tendernew">
+              <Button
                 sx={{
-                  color: '#333333',
+                  height: '2.50em',
+                  width: '10em',
                 }}
               >
-                Feature
-              </Typography>
-            </Button>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: '#333333',
+                  }}
+                >
+                  Feature
+                </Typography>
+              </Button>
             </Link>
 
-            
             <Button
               sx={{
                 height: '2.50em',
@@ -115,21 +116,21 @@ const Navbar = () => {
               </Typography>
             </Button>
             <Link to="/about">
-            <Button
-              sx={{
-                height: '2.50em',
-                width: '10em',
-              }}
-            >
-              <Typography
-                variant="subtitle1"
+              <Button
                 sx={{
-                  color: '#333333',
+                  height: '2.50em',
+                  width: '10em',
                 }}
               >
-                AboutUs
-              </Typography>
-            </Button>
+                <Typography
+                  variant="subtitle1"
+                  sx={{
+                    color: '#333333',
+                  }}
+                >
+                  AboutUs
+                </Typography>
+              </Button>
             </Link>
 
             {/*   Login  */}

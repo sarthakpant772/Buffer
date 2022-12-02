@@ -90,8 +90,7 @@ const collectTender = async (req, res) => {
     // console.log(userData)
     // console.log('data', userData[0].companyName)
     const collectedData = await CompletedTender({
-      companyName: userDat
-    // console.log('data', userData[0].companyName)a[0].companyName,
+      companyName: userData[0].companyName,
       companyId: datas[0].ownerId,
       name: chemicalData.name,
       quantity: chemicalData.quantity,
