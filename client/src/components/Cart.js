@@ -175,10 +175,11 @@ const Cart = () => {
                     <Typography gutterBottom variant="h3" component="div">
                       Item Name : {item.name}
                     </Typography>
+                    <Typography gutterBottom variant="h3" component="div">
+                      Item Grade : {item.grade}
+                    </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Lizards are a widespread group of squamate reptiles, with
-                      over 6,000 species, ranging across all continents except
-                      Antarctica
+                      Thanks for shopping
                     </Typography>
                   </CardContent>
                   <Box>

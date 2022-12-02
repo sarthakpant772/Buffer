@@ -52,7 +52,7 @@ const ChemicalCard = (item) => {
           // src={require(`../images/productImg/${item.item.name}.png`)}
         /> */}
 
-        <CardContent>
+        <CardContent sx={{ width: '90%' }}>
           <Box
             sx={{
               width: '100%',
@@ -78,10 +78,11 @@ const ChemicalCard = (item) => {
               <Typography variant="h6"> {item.item.price}</Typography>
             </Box>
           </Box>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          <Box sx={{ width: '100%' }}>
+            <Typography gutterBottom variant="h5" component="div">
+              Item Grade : {item.item.grade}
+            </Typography>
+          </Box>
         </CardContent>
         <CardActions
           sx={{
