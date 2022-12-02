@@ -22,7 +22,7 @@ import DashBoard from './components/DashBoard'
 import AddProducts from './components/AddProducts'
 import BuyerNav from './components/BuyerNav'
 import SellerNav from './components/SellerNav'
-
+import Aboutus from './components/Aboutus'
 import GetProducts from './components/CollectTender'
 import FinalTenders from './components/FinalTenders'
 import Payment from './components/Payment'
@@ -88,6 +88,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={ <Aboutus/> }/>
           <Route path="/previousBuy" element={<PreviousBuy />} />
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
