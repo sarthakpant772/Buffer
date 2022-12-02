@@ -27,11 +27,11 @@ const TenderCard = (item) => {
   const [Price, setPrice] = useState(parseInt(item.item.price))
 
   const handleDecrement = () => {
-    setPrice((prevCount) => prevCount - 100)
+    setPrice((prevCount) => prevCount - 1000)
   }
 
   const handleIncrement = () => {
-    setPrice((prevCount) => prevCount + 100)
+    setPrice((prevCount) => prevCount + 1000)
   }
 
   const makeTender = async () => {
@@ -85,24 +85,38 @@ const TenderCard = (item) => {
         <CardActions
           sx={{
             bottom: '0.07em',
+
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-evenly',
           }}
         >
-          <IconButton
-            aria-label="delete"
-            aria-color="secondary"
-            onClick={handleDecrement}
+          <Box
+            sx={{
+              width: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-evenly',
+            }}
           >
-            <RemoveCircleIcon />
-          </IconButton>
+            <Typography variant="subtitle1">Price:</Typography>
+            <IconButton
+              aria-label="delete"
+              aria-color="secondary"
+              onClick={handleDecrement}
+            >
+              <RemoveCircleIcon />
+            </IconButton>
 
-          <div className="form-control text -center">{Price}</div>
-          <IconButton
-            aria-label="delete"
-            aria-color="primary"
-            onClick={handleIncrement}
-          >
-            <AddCircleIcon />
-          </IconButton>
+            <div className="form-control text -center">{Price}</div>
+            <IconButton
+              aria-label="delete"
+              aria-color="primary"
+              onClick={handleIncrement}
+            >
+              <AddCircleIcon />
+            </IconButton>
+          </Box>
 
           <Button size="small" onClick={() => makeTender()}>
             Send Your Tender

@@ -44,13 +44,15 @@ const BuyerNav = () => {
               CHEMICALS
             </Button>
           </Link>
-          <Button
-            sx={{ height: '100%', marginLeft: '1em' }}
-            variant="outlined"
-            size="large"
-          >
-            Previous Buy
-          </Button>
+          <Link to="previousBuy">
+            <Button
+              sx={{ height: '100%', marginLeft: '1em' }}
+              variant="outlined"
+              size="large"
+            >
+              Previous Buy
+            </Button>
+          </Link>
         </Box>
         <Box
           sx={{

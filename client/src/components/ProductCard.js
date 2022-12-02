@@ -62,7 +62,7 @@ const ProductCard = (item) => {
         }}
       >
         <CardMedia
-          image={img1}
+          image={require(`../images/productImg/${item.item.name}.png`)}
           sx={{
             component: 'img',
             height: '16.875em',
@@ -74,9 +74,12 @@ const ProductCard = (item) => {
         <CardActions
           sx={{
             bottom: '0.07em',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-evenly',
           }}
         >
-          <div className="form-control text -center">{Price}</div>
+          <div className="form-control text -center">Price:{Price}</div>
 
           <Button size="small" onClick={() => makeTender()}>
             collect Tender

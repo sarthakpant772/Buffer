@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { productDelete, removeItem } from '../features/cart/cartSlice'
+import LoadingPage from './LoadingPage'
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -29,6 +30,8 @@ function loadScript(src) {
 }
 
 const Cart = () => {
+  const [loading, setLoading] = useState(true)
+
   const navigate = useNavigate()
   var companyId = localStorage.getItem('companyId')
   const displayRazorpay = async () => {
@@ -79,9 +82,9 @@ const Cart = () => {
 
   const handleBuy = async () => {
     const products = { getData }
-    console.log(data)
     try {
       for (var i = 0; i < data.length; ++i) {
+        console.log('data', data[i])
         const previous = await axios.put(
           'http://localhost:5000/previousBuy/addChemical',
           {
@@ -93,6 +96,7 @@ const Cart = () => {
             },
           },
         )
+        console.log('previous', previous)
       }
     } catch (err) {
       console.log(err)
@@ -101,13 +105,13 @@ const Cart = () => {
 
       setTimeout(async () => {
         dispatch(removeItem)
-        const data = await axios.put('http://localhost:5000/cart/clearCart', {
+        const datas = await axios.put('http://localhost:5000/cart/clearCart', {
           userId: companyId,
         })
-        getData = data
+        setData(datas)
         alert('Order Placed')
         navigate('/')
-      }, '20000')
+      }, '10000')
     }
   }
 
@@ -120,45 +124,79 @@ const Cart = () => {
   useEffect(() => {
     // window.location.reload()
     console.log(getData)
+
     setData(getData.products)
+    if (getData.totalCost !== '0') {
+      setLoading(false)
+    } else {
+      setLoading(true)
+    }
     // getAllData()
   }, [data, getData])
   const price = useSelector((state) => state.cart.totalCost)
 
   return (
     <div>
-      <Box sx={{ width: '100%', minHeight: '80vh', display: 'flex', marginTop:'2em' }}>
+      <Box
+        sx={{
+          width: '100%',
+          minHeight: '80vh',
+          display: 'flex',
+          marginTop: '2em',
+        }}
+      >
         <Box sx={{ width: '70%' }}>
           {data &&
             data.map((item) => (
-              <Card sx={{  width:'90%' ,marginBottom:'3em'}} key={item._id}>
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    onClick={() => dispatch(productDelete({ item }))}
-                  >
-                    remove
-                  </Button>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
+              <Card
+                sx={{
+                  width: '90%',
+                  marginBottom: '3em',
+                  display: 'flex',
+                  minHeight: '15em',
+                }}
+                key={item._id}
+              >
+                <Box
+                  sx={{
+                    height: '100%',
+                    width: '30%',
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    alt="green iguana"
+                    height="100%"
+                    image={require(`../images/productImg/${item.name}.png`)}
+                  />
+                </Box>
+                <Box>
+                  <CardContent>
+                    <Typography gutterBottom variant="h3" component="div">
+                      Item Name : {item.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Lizards are a widespread group of squamate reptiles, with
+                      over 6,000 species, ranging across all continents except
+                      Antarctica
+                    </Typography>
+                  </CardContent>
+                  <Box>
+                    <CardActions>
+                      <Button
+                        size="large"
+                        onClick={() => dispatch(productDelete({ item }))}
+                      >
+                        remove
+                      </Button>
+                      <Button size="large">add more</Button>
+                    </CardActions>
+                  </Box>
+                </Box>
               </Card>
             ))}
+
+          {loading && <LoadingPage />}
         </Box>
         <Box
           sx={{

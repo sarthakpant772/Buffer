@@ -5,11 +5,11 @@ const previousBuySchema = mongoose.Schema({
   products: [
     {
       name: { type: String },
-      quantity: { type: String, default: 0 },
-      price: { type: String, default: 0 },
+      quantity: { type: String, default: '0' },
+      price: { type: String, default: '0' },
     },
   ],
-  totalCost: { type: Number, default: 0 },
+  totalCost: { type: String, default: '0' },
 })
 
 module.exports = mongoose.model('PreviousBuy', previousBuySchema)

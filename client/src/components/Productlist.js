@@ -28,7 +28,7 @@ const Productlist = () => {
               component="img"
               alt="green iguana"
               height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
+              image={require(`../images/productImg/NACL.png`)}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">

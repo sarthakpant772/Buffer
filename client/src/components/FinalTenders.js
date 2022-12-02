@@ -10,9 +10,11 @@ import {
 import axios from 'axios'
 // import { chownSync } from 'fs'
 import React, { useEffect, useState } from 'react'
+import LoadingPage from './LoadingPage'
 
 const FinalTenders = () => {
   const [dis, setDis] = useState([])
+  const [loading, setLoading] = useState(true)
   function createData(name, buyer, calories, fat, carbs, protein) {
     return { name, buyer, calories, fat, carbs, protein }
   }
@@ -26,6 +28,7 @@ const FinalTenders = () => {
       )
       console.log(data.data)
       setDis(data.data)
+      if (data.data.length !== 0) setLoading(false)
     } catch (error) {
       console.log(error)
     }
@@ -61,11 +64,12 @@ const FinalTenders = () => {
                 {row.companyName}
               </TableCell>
               <TableCell align="right">{parseInt(row.AskedPrice)}</TableCell>
-              <TableCell align="right">{row.PriceGot}</TableCell>
+              <TableCell align="right">{row.PriceGot / 33333}</TableCell>
               <TableCell align="right">{row.quantity}</TableCell>
               <TableCell align="right">{row.grade}</TableCell>
             </TableRow>
           ))}
+          {loading && <LoadingPage />}
         </TableBody>
       </Table>
     </TableContainer>

@@ -1,11 +1,13 @@
 import { Box, Grid, Paper, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import LoadingPage from './LoadingPage'
 import ProductCard from './ProductCard'
 import TenderCard from './TenderCard'
 
 const GetProducts = () => {
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
   const getData = async () => {
     const companyId = localStorage.getItem('companyId')
     const Cdata = await axios.get(
@@ -13,6 +15,10 @@ const GetProducts = () => {
     )
     // console.log(Cdata)
     setData(Cdata.data)
+    if (Cdata.data.length !== 0) {
+      setLoading(false)
+      console.log(loading)
+    }
   }
 
   useEffect(() => {
@@ -46,7 +52,7 @@ const GetProducts = () => {
             marginLeft: '1em',
           }}
         >
-          All Chemicals
+          Your Tenders
         </Typography>
       </Box>
 
@@ -79,6 +85,7 @@ const GetProducts = () => {
             <Grid container spacing={3}>
               {data && data.map((item) => <ProductCard item={item} />)}
             </Grid>
+            {loading && <LoadingPage />}
           </Box>
         </Box>
       </Box>

@@ -32,7 +32,7 @@ const ChemicalCard = (item) => {
         }}
       >
         <CardMedia
-          image={require(`../images/productImg/NACL.png`)}
+          image={require(`../images/productImg/${item.item.name}.png`)}
           sx={{
             component: 'img',
             height: '16.875em',
@@ -40,6 +40,18 @@ const ChemicalCard = (item) => {
             marginTop: '1em',
           }}
         ></CardMedia>
+        {/* <Box
+          component="img"
+          sx={{
+            component: 'img',
+            height: '16.875em',
+            width: '17.625em',
+            marginTop: '1em',
+          }}
+          alt="productimg"
+          // src={require(`../images/productImg/${item.item.name}.png`)}
+        /> */}
+
         <CardContent>
           <Box
             sx={{

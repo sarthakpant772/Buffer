@@ -12,10 +12,11 @@ import { productAdd, productDelete } from '../features/cart/cartSlice'
 
 const PreviousBuy = () => {
   const dispatch = useDispatch()
-  const [data, setData] = useState(null)
+  const [data, setData] = useState()
   const check = useSelector((state) => state.previousBuy.products)
 
   useEffect(() => {
+    console.log('hello')
     setData(check)
     console.log(check)
   }, [check])
@@ -32,7 +33,8 @@ const PreviousBuy = () => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                {item.name}
+                {/* name */}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Lizards are a widespread group of squamate reptiles, with over

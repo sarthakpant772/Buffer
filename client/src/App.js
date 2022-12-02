@@ -28,7 +28,7 @@ import GetProducts from './components/CollectTender'
 import FinalTenders from './components/FinalTenders'
 import Payment from './components/Payment'
 import ChemicalPage from './components/ChemicalPage'
-import Features from './components/Features'
+import PreviousOrderPage from './components/PreviousOrderPage'
 
 function App() {
   const theme = createTheme({
@@ -90,11 +90,9 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/about" element={ <Aboutus/> }/>
-          <Route path="/previousBuy" element={<PreviousBuy />} />
-          <Route path="/tendernew" element={<TenderNew/>}/>
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
+              <Route path="previousBuy" element={<PreviousOrderPage />} />
               <Route path="cart" element={<Cart />} />
               <Route path="allProducts" element={<ChemicalPage />} />
               <Route path="allTender" element={<Tender />} />

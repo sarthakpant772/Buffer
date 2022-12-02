@@ -3,26 +3,24 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import TenderCard from './TenderCard'
 import empty from '../images/empty.gif'
-const Tender = () => {
-  const [data, setData] = useState([])
-  const [loding, setLoding] = useState(true)
-  const getData = async () => {
-    try {
-      const tempData = await axios.get(
-        'http://localhost:5000/chemical/getTenderData',
-      )
-      // console.log('loda', tempData.data)
-      setData(tempData.data)
-      setLoding(true)
-      console.log('check', data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+import { useDispatch, useSelector } from 'react-redux'
+import ProductCard from './ProductCard'
+import ChemicalCard from './ChemicalCard'
+
+const PreviousOrderPage = () => {
+  const dispatch = useDispatch()
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const check = useSelector((state) => state.previousBuy.products)
 
   useEffect(() => {
-    getData()
-  }, [loding])
+    // console.log('hello')
+    setData(check)
+    console.log(check.length)
+    if (check.length !== 0) {
+      setLoading(false)
+    }
+  }, [check])
 
   return (
     <Paper
@@ -51,7 +49,7 @@ const Tender = () => {
             marginLeft: '1em',
           }}
         >
-          TENDER
+          Previous Orders
         </Typography>
       </Box>
 
@@ -77,13 +75,10 @@ const Tender = () => {
         >
           <Box marginBottom={'3em'}>
             <Grid container spacing={3}>
-              {data.map((item) => (
-                <TenderCard item={item} />
-              ))}
+              {data && data.map((item) => <ChemicalCard item={item} />)}
             </Grid>
           </Box>
-
-          {loding || (
+          {loading && (
             <Box
               sx={{
                 wdith: '100%',
@@ -113,4 +108,4 @@ const Tender = () => {
   )
 }
 
-export default Tender
+export default PreviousOrderPage
