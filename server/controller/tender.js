@@ -87,10 +87,11 @@ const collectTender = async (req, res) => {
     const userData = await User.find({
       _id: datas[0].allTenders[finalCheck].tenderCompanyId,
     })
-    console.log(userData)
-    console.log('data', userData[0].companyName)
+    // console.log(userData)
+    // console.log('data', userData[0].companyName)
     const collectedData = await CompletedTender({
-      companyName: userData[0].companyName,
+      companyName: userDat
+    // console.log('data', userData[0].companyName)a[0].companyName,
       companyId: datas[0].ownerId,
       name: chemicalData.name,
       quantity: chemicalData.quantity,
@@ -101,7 +102,7 @@ const collectTender = async (req, res) => {
 
     const savedCollected = await collectedData.save()
 
-    console.log('savedData', savedCollected)
+    // console.log('savedData', savedCollected)
 
     // console.log(data)
     res.status(200).json(finalData)
