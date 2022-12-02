@@ -5,6 +5,7 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  InputAdornment,
   MenuItem,
   Paper,
   Radio,
@@ -237,6 +238,9 @@ const AddProducts = () => {
               required
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
+              InputProps={{
+            startAdornment: <InputAdornment position="start">kg</InputAdornment>,
+          }}
             />
             <TextField
               margin="dense"
@@ -245,6 +249,9 @@ const AddProducts = () => {
               required
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              InputProps={{
+            startAdornment: <InputAdornment position="start">Rs.</InputAdornment>,
+          }}
             />
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
