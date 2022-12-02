@@ -46,7 +46,7 @@ export const productFetch = createAsyncThunk('cart/productFetch', async () => {
 
 export const productAdd = createAsyncThunk('cart/productAdd', async (item) => {
   var companyId = localStorage.getItem('companyId')
-
+  // console.log(item.item.price)
   try {
     const responce = await axios.put('http://localhost:5000/cart/addProducts', {
       userId: companyId,

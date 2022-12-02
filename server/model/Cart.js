@@ -5,7 +5,7 @@ const cartSchema = mongoose.Schema({
   products: [
     {
       type: {
-        name: { type: String, unique: true },
+        name: { type: String },
         quantity: String,
         price: String,
         companyName: String,
@@ -14,7 +14,7 @@ const cartSchema = mongoose.Schema({
     },
     { timestamps: true },
   ],
-  totalCost: { type: Number, default: 0 },
+  totalCost: { type: String, default: '0' },
 })
 
 module.exports = mongoose.model('Cart', cartSchema)

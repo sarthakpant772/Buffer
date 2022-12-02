@@ -32,7 +32,7 @@ const Productlist = () => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                {item.item.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Lizards are a widespread group of squamate reptiles, with over
@@ -46,7 +46,7 @@ const Productlist = () => {
               >
                 Add to cart
               </Button>
-              <Button size="small">Learn More</Button>
+              <Button size="small">{item.price}</Button>
             </CardActions>
           </Card>
         ))}

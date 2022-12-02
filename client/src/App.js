@@ -18,6 +18,15 @@ import PreviousBuy from './components/PreviousBuy'
 import { createTheme, ThemeProvider } from '@mui/material'
 import HomePage from './components/HomePage'
 import Tender from './components/Tender'
+import DashBoard from './components/DashBoard'
+import AddProducts from './components/AddProducts'
+import BuyerNav from './components/BuyerNav'
+import SellerNav from './components/SellerNav'
+import Aboutus from './components/Aboutus'
+import GetProducts from './components/CollectTender'
+import FinalTenders from './components/FinalTenders'
+import Payment from './components/Payment'
+import ChemicalPage from './components/ChemicalPage'
 
 function App() {
   const theme = createTheme({
@@ -79,8 +88,24 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/productList" element={<Productlist />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={ <Aboutus/> }/>
           <Route path="/previousBuy" element={<PreviousBuy />} />
-          <Route path="/tender" element={<Tender />} />
+          <Route path="dashboard" element={<DashBoard />}>
+            <Route path="buyer" element={<BuyerNav />}>
+              <Route path="cart" element={<Cart />} />
+              <Route path="allProducts" element={<ChemicalPage />} />
+              <Route path="allTender" element={<Tender />} />
+            </Route>
+            <Route path="seller" element={<SellerNav />}>
+              {/* Add products */}
+              <Route path="addProduct" element={<AddProducts />} />
+              {/* collect Tender */}
+              <Route path="addTender" element={<GetProducts />} />
+              <Route path="collectedTender" element={<FinalTenders />} />
+            </Route>
+          </Route>
+
+          <Route path="payment" element={<Payment />} />
         </Routes>
       </ThemeProvider>
     </div>

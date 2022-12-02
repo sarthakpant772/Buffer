@@ -1,11 +1,14 @@
 const { find } = require('../model/Tender')
 const Tender = require('../model/Tender')
 const argon2 = require('argon2')
-
+const Chemicals = require('../model/Chemicals')
+const { connect } = require('mongoose')
+const User = require('../model/User')
+const CompletedTender = require('../model/CompletedTender')
 const createTender = async (req, res) => {
   const data = await Tender({
     productId: req.body.productId,
-    allTenders: req.body.allTenders,
+    ownerId: req.body.companyId,
   })
 
   try {
@@ -20,9 +23,10 @@ const addTender = async (req, res) => {
   let price = parseInt(req.body.allTenders.price)
   price = 33333 * price
   price = price.toString()
-  console.log(price)
+  // console.log(price)
+  // console.log('ownerid', req.body.allTenders.tenderCompanyId)
   const { product_id } = req.params
-  console.log(product_id)
+  // console.log(product_id)
   try {
     const savedData = await Tender.findOneAndUpdate(
       {
@@ -45,8 +49,11 @@ const addTender = async (req, res) => {
 
 const collectTender = async (req, res) => {
   const { productId } = req.params
+  // const companyId = res.body.companyId
+  // console.log(productId)
   try {
-    const datas = await Tender.find({ product_id: productId })
+    const datas = await Tender.find({ productId: productId })
+    // console.log(datas)
     let ma = -1
     const allTender = datas[0]
     // console.log(allTender)
@@ -60,12 +67,42 @@ const collectTender = async (req, res) => {
     }
 
     const finalData = await Tender.findOneAndUpdate(
-      { product_id: productId },
+      { productId: productId },
       {
         finalTender: datas[0].allTenders[finalCheck],
+        isClosed: 'true',
       },
     )
 
+    const data = await Chemicals.findOneAndUpdate(
+      { _id: productId },
+      {
+        isSolved: 'true',
+      },
+    )
+    const chemicalData = await Chemicals.findOne({
+      _id: productId,
+    })
+
+    const userData = User.findById(
+      datas[0].allTenders[finalCheck].tenderCompanyId,
+    )
+    // console.log('data', datas)
+    const collectedData = await CompletedTender({
+      companyName: userData.companyName,
+      companyId: datas[0].ownerId,
+      name: chemicalData.name,
+      quantity: chemicalData.quantity,
+      grade: chemicalData.grade,
+      AskedPrice: chemicalData.price,
+      PriceGot: datas[0].allTenders[finalCheck].price,
+    })
+
+    const savedCollected = await collectedData.save()
+
+    // console.log('savedData', savedCollected)
+
+    // console.log(data)
     res.status(200).json(finalData)
   } catch (err) {
     console.log(err)
@@ -76,7 +113,20 @@ const collectTender = async (req, res) => {
 const getSelectedTender = async (req, res) => {
   const { productId } = req.params
   try {
-    const data = await Tender.findOne({ product_id: productId })
+    const data = await Tender.findOne({
+      productId: productId,
+    })
+    // console.log(data)
+    res.status(200).json(data)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+const getTenderUsingCompany = async (req, res) => {
+  const { id } = req.params
+  try {
+    const data = await Tender.find({ ownerId: id, isClosed: 'true' })
     res.status(200).json(data)
   } catch (err) {
     res.status(500).json(err)
@@ -98,4 +148,5 @@ module.exports = {
   addTender,
   getSelectedTender,
   getAllTender,
+  getTenderUsingCompany,
 }
