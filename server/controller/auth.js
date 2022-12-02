@@ -1,7 +1,6 @@
 const User = require('../model/User')
 const argon2 = require('argon2')
 
-
 const { use } = require('../routes/auth')
 const Cart = require('../model/Cart')
 const PreviousBuy = require('../model/PreviousBuy')
@@ -12,7 +11,7 @@ const registerUser = async (req, res) => {
   const newUser = new User({
     email: req.body.email,
     password: password,
-    userName: req.body.companyName,
+    companyName: req.body.companyName,
     phoneNumber: req.body.phoneNumber,
     acType: req.body.acType,
   })
