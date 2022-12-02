@@ -127,11 +127,11 @@ const Cart = () => {
 
   return (
     <div>
-      <Box sx={{ width: '100%', minHeight: '80vh', display: 'flex' }}>
+      <Box sx={{ width: '100%', minHeight: '80vh', display: 'flex', marginTop:'2em' }}>
         <Box sx={{ width: '70%' }}>
           {data &&
             data.map((item) => (
-              <Card sx={{ maxWidth: 345 }} key={item._id}>
+              <Card sx={{  width:'90%' ,marginBottom:'3em'}} key={item._id}>
                 <CardMedia
                   component="img"
                   alt="green iguana"
