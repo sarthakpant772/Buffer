@@ -5,9 +5,9 @@ import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
-import IMAGE from "./static/IMAGE.png"
+import IMAGE from "../images/IMAGE.png"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CardActions, CardContent, Collapse, Typography } from '@mui/material';
+import { Box, CardActions, CardContent, Collapse, Typography } from '@mui/material';
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -27,6 +27,7 @@ export default function RecipeReviewCard() {
   };
 
   return (
+    
     <Card sx={{ maxWidth: 500 }}>
      
       <CardMedia
@@ -95,5 +96,6 @@ export default function RecipeReviewCard() {
         </CardContent>
       </Collapse>
     </Card>
+   
   );
 }

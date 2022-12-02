@@ -23,10 +23,12 @@ import AddProducts from './components/AddProducts'
 import BuyerNav from './components/BuyerNav'
 import SellerNav from './components/SellerNav'
 import Aboutus from './components/Aboutus'
+import TenderNew from './components/TenderNew'
 import GetProducts from './components/CollectTender'
 import FinalTenders from './components/FinalTenders'
 import Payment from './components/Payment'
 import ChemicalPage from './components/ChemicalPage'
+import Features from './components/Features'
 
 function App() {
   const theme = createTheme({
@@ -90,6 +92,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={ <Aboutus/> }/>
           <Route path="/previousBuy" element={<PreviousBuy />} />
+          <Route path="/tendernew" element={<TenderNew/>}/>
           <Route path="dashboard" element={<DashBoard />}>
             <Route path="buyer" element={<BuyerNav />}>
               <Route path="cart" element={<Cart />} />

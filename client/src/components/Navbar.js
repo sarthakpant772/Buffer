@@ -80,6 +80,7 @@ const Navbar = () => {
             }}
           >
             {/*  */}
+            <Link to='/tendernew'>
             <Button
               sx={{
                 height: '2.50em',
@@ -95,6 +96,9 @@ const Navbar = () => {
                 Feature
               </Typography>
             </Button>
+            </Link>
+
+            
             <Button
               sx={{
                 height: '2.50em',
@@ -110,6 +114,7 @@ const Navbar = () => {
                 Pricing
               </Typography>
             </Button>
+            <Link to="/about">
             <Button
               sx={{
                 height: '2.50em',
@@ -125,6 +130,7 @@ const Navbar = () => {
                 AboutUs
               </Typography>
             </Button>
+            </Link>
 
             {/*   Login  */}
             {loggedIn || (

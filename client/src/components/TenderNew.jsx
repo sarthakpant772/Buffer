@@ -28,12 +28,13 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <Box justifyContent="centre" flex={6} p={1}>
+    <Box>
+    <Box justifyContent="centre" flex={6} p={1} marginLeft="15em">
     <Stack direction="row" spacing={1} justifyContent="space-between">
     <Card  sx={{ minWidth: 500, maxWidth:950 ,justifyContent:"center" }} textAlign="center" style={{backgroundColor:"white"}}>
       <CardContent>
       <Typography sx={{ fontSize: 50 }} color="gray" gutterBottom  textAlign={"center"}>
-          All About Tendering
+          All About Tender Process
         </Typography>
         <Typography variant="body2" fontSize={18} color="text.secondary">
         Open to all organisations to submit a tender. On large projects, this may involve a
@@ -89,6 +90,7 @@ export default function RecipeReviewCard() {
     <Sidebar/>
     </Box>
     </Stack>
+    </Box>
     </Box>
   );
 }
