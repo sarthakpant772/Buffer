@@ -88,7 +88,7 @@ const collectTender = async (req, res) => {
       _id: datas[0].allTenders[finalCheck].tenderCompanyId,
     })
     // console.log(userData)
-    // console.log('data', userData[0].companyName)
+    console.log('data', userData[0].companyName)
     const collectedData = await CompletedTender({
       companyName: userData[0].companyName,
       companyId: datas[0].ownerId,

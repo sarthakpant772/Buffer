@@ -51,6 +51,7 @@ const Registration = () => {
           acType: acType,
         },
       )
+      console.log(savedData)
       if (savedData.status === 500) {
         alert('server error occured')
       } else {
