@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const completedTenderSchema = mongoose.Schema({
-  companyName: { type: String, default: '' },
+  companyName: { type: String },
   companyId: { type: String },
   name: { type: String },
   quantity: String,

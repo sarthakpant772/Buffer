@@ -82,15 +82,7 @@ const TenderCard = (item) => {
           }}
         ></CardMedia>
 
-        <CardActions
-          sx={{
-            bottom: '0.07em',
-
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'space-evenly',
-          }}
-        >
+        <CardContent sx={{ width: '90%' }}>
           <Box
             sx={{
               width: '50%',
@@ -117,17 +109,28 @@ const TenderCard = (item) => {
               <AddCircleIcon />
             </IconButton>
           </Box>
-
-          <Button size="small" onClick={() => makeTender()}>
-            Send Your Tender
-          </Button>
-        </CardActions>
-
-        <CardContent>
+          <Box sx={{ width: '100%' }}>
+            <Typography gutterBottom variant="h5" component="div">
+              Item Grade : {item.item.grade}
+            </Typography>
+          </Box>
           <Typography gutterBottom variant="h5" component="div">
             {item.item.name}
           </Typography>
         </CardContent>
+        <CardActions
+          sx={{
+            bottom: '0.07em',
+
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-evenly',
+          }}
+        >
+          <Button size="small" onClick={() => makeTender()}>
+            Send Your Tender
+          </Button>
+        </CardActions>
       </Card>
     </Grid>
   )

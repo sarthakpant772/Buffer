@@ -84,12 +84,13 @@ const collectTender = async (req, res) => {
       _id: productId,
     })
 
-    const userData = User.findById(
-      datas[0].allTenders[finalCheck].tenderCompanyId,
-    )
-    // console.log('data', datas)
+    const userData = await User.find({
+      _id: datas[0].allTenders[finalCheck].tenderCompanyId,
+    })
+    // console.log(userData)
+    // console.log('data', userData[0].companyName)
     const collectedData = await CompletedTender({
-      companyName: userData.companyName,
+      companyName: userData[0].companyName,
       companyId: datas[0].ownerId,
       name: chemicalData.name,
       quantity: chemicalData.quantity,
