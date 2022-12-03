@@ -45,9 +45,9 @@ const FinalTenders = () => {
           <TableRow>
             <TableCell>Name of chemical</TableCell>
             <TableCell>Name of Buyer</TableCell>
-            <TableCell align="right">Asked Price</TableCell>
-            <TableCell align="right">Price got</TableCell>
-            <TableCell align="right">Quantity</TableCell>
+            <TableCell align="right">Asked Price(Rs.)</TableCell>
+            <TableCell align="right">Price got(Rs.)</TableCell>
+            <TableCell align="right">Quantity(Kg)</TableCell>
             <TableCell align="right">grade</TableCell>
           </TableRow>
         </TableHead>
