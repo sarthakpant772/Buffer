@@ -82,16 +82,19 @@ const TenderCard = (item) => {
           }}
         ></CardMedia>
 
-        <CardContent sx={{ width: '90%' }}>
+        <CardContent
+          sx={{ width: '90%', alignItems: 'center', justifyContent: 'center' }}
+        >
           <Box
             sx={{
+              marginLeft: '1em',
               width: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-evenly',
             }}
           >
-            <Typography variant="subtitle1">Price:</Typography>
+            <Typography variant="subtitle1">Price(Rs):</Typography>
             <IconButton
               aria-label="delete"
               aria-color="secondary"
@@ -112,6 +115,9 @@ const TenderCard = (item) => {
           <Box sx={{ width: '100%' }}>
             <Typography gutterBottom variant="h5" component="div">
               Item Grade : {item.item.grade}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Item Quantity (Kg): {item.item.quantity}
             </Typography>
           </Box>
           <Typography gutterBottom variant="h5" component="div">

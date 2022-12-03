@@ -74,13 +74,16 @@ const ChemicalCard = (item) => {
                 justifyContent: 'space-evenly',
               }}
             >
-              <Typography variant="h6">Price :</Typography>
-              <Typography variant="h6"> {item.item.price}</Typography>
+              <Typography variant="h7">Price(RS) :</Typography>
+              <Typography variant="h7"> {item.item.price}</Typography>
             </Box>
           </Box>
           <Box sx={{ width: '100%' }}>
             <Typography gutterBottom variant="h5" component="div">
               Item Grade : {item.item.grade}
+            </Typography>
+            <Typography variant="h5">
+              Item Quantity(Kg):{item.item.quantity}{' '}
             </Typography>
           </Box>
         </CardContent>

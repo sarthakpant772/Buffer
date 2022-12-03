@@ -176,7 +176,7 @@ const Cart = () => {
                       Item Name : {item.name}
                     </Typography>
                     <Typography gutterBottom variant="h3" component="div">
-                      Item Grade : {item.grade}
+                      Item Price(Rs) : {item.price}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Thanks for shopping

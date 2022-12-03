@@ -17,9 +17,11 @@ import { Link, useNavigate } from 'react-router-dom'
 const Navbar = () => {
   const navigate = useNavigate()
   const count = useSelector((state) => state.user.islogged)
+  const data = useSelector((state) => state.user.data)
   const [loggedIn, setLoggedIn] = useState(false)
   const [number, setNumber] = useState(0)
   const [totalCost, setTotalCost] = useState(0)
+
   const tempCost = useSelector((state) => state.cart.totalCost)
   const noItem = useSelector((state) => state.cart.count)
 
@@ -31,8 +33,10 @@ const Navbar = () => {
   }
   useEffect(() => {
     setNumber(noItem)
+
     setTotalCost(tempCost)
     setLoggedIn(count)
+    // console.log(userData)
   }, [noItem, tempCost, count, loggedIn])
 
   return (
