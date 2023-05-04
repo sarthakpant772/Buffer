@@ -68,40 +68,40 @@ const currencies = [
     value: 'Ethylene Dichloride (C2H2Cl2)',
     label: 'Ethylene Dichloride (C2H2Cl2)',
   },
-  
+
   {
     value: 'Phosphoric Acid (H3PO4)',
     label: 'Phosphoric Acid (H3PO4)',
   },
-   {
+  {
     value: 'Ammonia (NH3)',
     label: 'Ammonia (NH3)',
   },
-   {
+  {
     value: 'Sodium Hydroxide (NaOH)',
     label: 'Sodium Hydroxide (NaOH)',
   },
-   {
+  {
     value: 'Sodium carbonate',
     label: 'Sodium carbonate',
   },
-   {
+  {
     value: 'Sodium silicate',
     label: 'Sodium silicate',
   },
-   {
+  {
     value: 'Aluminum sulfate',
     label: 'Aluminum sulfate',
   },
-   {
+  {
     value: 'Urea',
     label: 'Urea',
   },
-   {
+  {
     value: 'Potash',
     label: 'Potash',
   },
-   {
+  {
     value: 'Titanium dioxide',
     label: 'Titanium dioxide',
   },
@@ -147,19 +147,17 @@ const AddProducts = () => {
   const [isTender, setIsTender] = useState('false')
 
   const handleSubmit = async (e) => {
+    const data = process.env.REACT_APP_BACKEND
     var companyId = localStorage.getItem('companyId')
     try {
-      const data = await axios.post(
-        'http://localhost:5000/chemical/addChemical',
-        {
-          companyId: companyId,
-          name: currency,
-          quantity: quantity,
-          grade: grade,
-          price: price,
-          isTender: isTender,
-        },
-      )
+      const data = await axios.post(`${data}/chemical/addChemical`, {
+        companyId: companyId,
+        name: currency,
+        quantity: quantity,
+        grade: grade,
+        price: price,
+        isTender: isTender,
+      })
       console.log(data.data._id)
       if (isTender === 'true') {
         const finalData = await axios.post(
@@ -239,8 +237,10 @@ const AddProducts = () => {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               InputProps={{
-            startAdornment: <InputAdornment position="start">kg</InputAdornment>,
-          }}
+                startAdornment: (
+                  <InputAdornment position="start">kg</InputAdornment>
+                ),
+              }}
             />
             <TextField
               margin="dense"
@@ -250,8 +250,10 @@ const AddProducts = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               InputProps={{
-            startAdornment: <InputAdornment position="start">Rs.</InputAdornment>,
-          }}
+                startAdornment: (
+                  <InputAdornment position="start">Rs.</InputAdornment>
+                ),
+              }}
             />
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">

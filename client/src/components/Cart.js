@@ -30,6 +30,7 @@ function loadScript(src) {
 }
 
 const Cart = () => {
+  const httpID = process.env.REACT_APP_BACKEND
   const [loading, setLoading] = useState(true)
 
   const navigate = useNavigate()
@@ -85,17 +86,14 @@ const Cart = () => {
     try {
       for (var i = 0; i < data.length; ++i) {
         console.log('data', data[i])
-        const previous = await axios.put(
-          'http://localhost:5000/previousBuy/addChemical',
-          {
-            userid: companyId,
-            products: {
-              name: data[i].name,
-              price: data[i].price,
-              quantity: data[i].quantity,
-            },
+        const previous = await axios.put(`${httpID}previousBuy/addChemical`, {
+          userid: companyId,
+          products: {
+            name: data[i].name,
+            price: data[i].price,
+            quantity: data[i].quantity,
           },
-        )
+        })
         console.log('previous', previous)
       }
     } catch (err) {
@@ -105,7 +103,7 @@ const Cart = () => {
 
       setTimeout(async () => {
         dispatch(removeItem)
-        const datas = await axios.put('http://localhost:5000/cart/clearCart', {
+        const datas = await axios.put(`${httpID}/cart/clearCart`, {
           userId: companyId,
         })
         setData(datas)
@@ -117,7 +115,7 @@ const Cart = () => {
 
   const getAllData = async () => {
     var companyId = localStorage.getItem('companyId')
-    const responce = await axios.get(`http://localhost:5000/cart/${companyId}`)
+    const responce = await axios.get(`${httpID}/cart/${companyId}`)
     setData(responce)
   }
 

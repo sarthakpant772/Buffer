@@ -5,7 +5,7 @@ const initialState = {
   islogged: false,
   data: [],
 }
-
+const httpID = process.env.REACT_APP_BACKEND
 export const checkLoggedIn = createAsyncThunk(
   'user/checkLoggedIn',
   async () => {
@@ -19,7 +19,7 @@ export const checkLoggedIn = createAsyncThunk(
 export const getUserData = createAsyncThunk('user/getUserData', async () => {
   const companyId = localStorage.getItem('companyId')
 
-  const data = await axios.get(`http://localhost:5000/getUser/${companyId}`)
+  const data = await axios.get(`${httpID}/getUser/${companyId}`)
   // console.log('reduxdata', data)
   return data.data
 })

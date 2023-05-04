@@ -5,12 +5,11 @@ import TenderCard from './TenderCard'
 import empty from '../images/empty.gif'
 const Tender = () => {
   const [data, setData] = useState([])
+  const httpID = process.env.REACT_APP_BACKEND
   const [loding, setLoding] = useState(true)
   const getData = async () => {
     try {
-      const tempData = await axios.get(
-        'http://localhost:5000/chemical/getTenderData',
-      )
+      const tempData = await axios.get(`${httpID}/chemical/getTenderData`)
       // console.log('loda', tempData.data)
       setData(tempData.data)
       setLoding(true)

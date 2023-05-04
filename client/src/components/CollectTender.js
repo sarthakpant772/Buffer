@@ -9,9 +9,10 @@ const GetProducts = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const getData = async () => {
+    const httpID = process.env.REACT_APP_BACKEND
     const companyId = localStorage.getItem('companyId')
     const Cdata = await axios.get(
-      `http://localhost:5000/chemical/getSpecificChemical/${companyId}`,
+      `${httpID}/chemical/getSpecificChemical/${companyId}`,
     )
     // console.log(Cdata)
     setData(Cdata.data)

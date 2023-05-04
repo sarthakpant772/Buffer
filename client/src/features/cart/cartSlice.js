@@ -10,25 +10,23 @@ const initialState = {
   totalCost: 0,
   status: null,
 }
+const httpID = process.env.REACT_APP_BACKEND
 
 export const productDelete = createAsyncThunk(
   'cart/productDelete',
   async (item) => {
     var companyId = localStorage.getItem('companyId')
     try {
-      const responce = await axios.delete(
-        `http://localhost:5000/cart/${item.item._id}`,
-        {
-          data: {
-            userId: companyId,
-            products: {
-              name: item.item.name,
-              price: item.item.price,
-              quantity: item.item.quantity,
-            },
+      const responce = await axios.delete(`${httpID}/cart/${item.item._id}`, {
+        data: {
+          userId: companyId,
+          products: {
+            name: item.item.name,
+            price: item.item.price,
+            quantity: item.item.quantity,
           },
         },
-      )
+      })
 
       // console.log(responce.data)
       return responce.data
@@ -40,7 +38,7 @@ export const productDelete = createAsyncThunk(
 
 export const productFetch = createAsyncThunk('cart/productFetch', async () => {
   var companyId = localStorage.getItem('companyId')
-  const responce = await axios.get(`http://localhost:5000/cart/${companyId}`)
+  const responce = await axios.get(`${httpID}/cart/${companyId}`)
   return responce.data
 })
 
@@ -48,7 +46,7 @@ export const productAdd = createAsyncThunk('cart/productAdd', async (item) => {
   var companyId = localStorage.getItem('companyId')
   // console.log(item.item.price)
   try {
-    const responce = await axios.put('http://localhost:5000/cart/addProducts', {
+    const responce = await axios.put(`${httpID}/cart/addProducts`, {
       userId: companyId,
       products: {
         name: item.item.name,

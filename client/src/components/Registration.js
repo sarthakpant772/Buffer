@@ -33,6 +33,7 @@ const Registration = () => {
   const avatarStyle = { marginBottom: '30px', marginTop: '10px' }
   const headerStyle = { margin: 0 }
   const formStyle = { margin: 0, marginTop: '50px' }
+  const httpID = process.env.REACT_APP_BACKEND
   const handleSubmit = async () => {
     if (password !== confirmPassword) {
       alert('password incorrect')
@@ -41,16 +42,13 @@ const Registration = () => {
     } else if (email === '' || password === '' || acType === '') {
       alert('fill required details completely')
     } else {
-      const savedData = await axios.post(
-        'http://localhost:5000/user/register',
-        {
-          email: email,
-          password: password,
-          companyName: companyName,
-          phoneNumber: phoneNumber,
-          acType: acType,
-        },
-      )
+      const savedData = await axios.post(`${httpID}/user/register`, {
+        email: email,
+        password: password,
+        companyName: companyName,
+        phoneNumber: phoneNumber,
+        acType: acType,
+      })
       console.log(savedData)
       if (savedData.status === 500) {
         alert('server error occured')

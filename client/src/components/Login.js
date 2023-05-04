@@ -13,13 +13,14 @@ import { useDispatch } from 'react-redux'
 import { loggedIn } from '../features/user/userSlice'
 import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  const httpID = process.env.REACT_APP_BACKEND
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/user/login', {
+      const res = await axios.post(`${httpID}/user/login`, {
         email,
         password,
       })

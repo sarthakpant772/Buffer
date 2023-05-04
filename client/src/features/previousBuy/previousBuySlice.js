@@ -6,14 +6,14 @@ const initialState = {
   status: [],
   value: 0,
 }
-
+const httpID = process.env.REACT_APP_BACKEND
 export const getPreviousBuy = createAsyncThunk(
   'previousBuy/getPreviousBuy',
   async () => {
     var companyId = localStorage.getItem('companyId')
 
     const data = await axios.get(
-      `http://localhost:5000/previousBuy/getPreviousChemical/${companyId}`,
+      `${httpID}/previousBuy/getPreviousChemical/${companyId}`,
     )
 
     return data.data.products

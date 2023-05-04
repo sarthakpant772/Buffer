@@ -12,9 +12,9 @@ import { addItem, productAdd } from '../features/cart/cartSlice'
 const Productlist = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState([])
-
+  const httpID = process.env.REACT_APP_BACKEND
   useEffect(() => {
-    fetch('http://localhost:5000/chemical/getAllChemical')
+    fetch(`${httpID}/chemical/getAllChemical`)
       .then((response) => response.json())
       .then((data) => setData(data))
   }, [])

@@ -29,17 +29,16 @@ const TenderCard = (item) => {
   const handleDecrement = () => {
     setPrice((prevCount) => prevCount - 1000)
   }
-
+  const httpID = process.env.REACT_APP_BACKEND
   const handleIncrement = () => {
     setPrice((prevCount) => prevCount + 1000)
   }
-
   const makeTender = async () => {
     try {
       var companyId = localStorage.getItem('companyId')
 
       const data = await axios.put(
-        `http://localhost:5000/tender/addTender/${item.item._id}`,
+        `${httpID}/tender/addTender/${item.item._id}`,
         {
           allTenders: {
             name: item.item.name,

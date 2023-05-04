@@ -30,9 +30,9 @@ const ProductCard = (item) => {
     try {
       console.log(item.item._id)
       var companyId = localStorage.getItem('companyId')
-
+      const httpID = process.env.REACT_APP_BACKEND
       const data = await axios.get(
-        `http://localhost:5000/tender/collectTender/${item.item._id}`,
+        `${httpID}/tender/collectTender/${item.item._id}`,
         {
           companyId: companyId,
         },
