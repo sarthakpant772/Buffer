@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import React from 'react'
 import Features from './Features'
 import Footer from './Footer'
@@ -6,10 +7,12 @@ import SignPage from './SignPage'
 const HomePage = () => {
   return (
     <div>
-      <Heropage />
-      <Features />
-      <SignPage/>
-      <Footer/>
+      <Box style={{ marginLeft: '1em', marginRight: '1em' }}>
+        <Heropage />
+        <Features />
+        <SignPage />
+        <Footer />
+      </Box>
     </div>
   )
 }

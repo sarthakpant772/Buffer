@@ -23,10 +23,9 @@ const SignPage = () => {
       <Box
         sx={{
           width: '100%',
-          height: '65em',
-
+          height: { md: '65em' },
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
           alignItems: 'center',
         }}
@@ -34,7 +33,7 @@ const SignPage = () => {
         <Box
           sx={{
             height: '70%',
-            width: '50%',
+            width: { xs: '100%', md: '50%' },
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',
@@ -44,8 +43,8 @@ const SignPage = () => {
           <Box>
             <Box
               sx={{
-                height: '10.125em',
-                width: '35.625em',
+                height: { md: '10.125em' },
+                width: { xs: '100%', md: '35.625em' },
               }}
             >
               <Typography variant="h2">
@@ -57,8 +56,8 @@ const SignPage = () => {
 
             <Box
               sx={{
-                height: '9.875em',
-                width: '40.8125em',
+                height: { md: '9.875em' },
+                width: { xs: '100%', md: '40.8125em' },
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
@@ -77,10 +76,11 @@ const SignPage = () => {
                 borderStyle: 'solid',
                 borderWidth: '0.125em',
                 borderColor: '#51A387',
-                width: '20%',
+                alignItems: 'center',
+                width: { xs: '100%', md: '20%' },
               }}
             >
-              <Button>
+              <Button sx={{ alignItems: 'center', width: '100%' }}>
                 <Typography variant="subtitle1">Who We Are</Typography>
               </Button>
             </Box>
@@ -89,27 +89,31 @@ const SignPage = () => {
 
         <Box
           sx={{
-            height: '70%',
-            width: '50%',
+            marginTop: '2em',
+            height: { md: '70%' },
+            width: { xs: '100%', md: '50%' },
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            position: 'relative',
           }}
         >
           <Box
             component="img"
             src={Ellipse}
             sx={{
-              width: '49em',
-              height: '50em',
+              display: { xs: 'none', md: 'flex' },
+              width: { xs: '100%', md: '49em' },
+              height: { xs: '100%', md: '50em' },
               zIndex: '-1',
               position: 'absolute',
+              animation: 'spin 20s linear infinite', // Add the animation CSS property
             }}
           />
           <Box
             sx={{
               height: '100%',
-              width: '50%',
+              width: { xs: '100%', md: '50%' },
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-evenly',
@@ -159,6 +163,7 @@ const SignPage = () => {
 
               <Box
                 sx={{
+                  zIndex: -1,
                   width: '100%',
                 }}
               >

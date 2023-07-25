@@ -12,16 +12,17 @@ const Heropage = () => {
     <div>
       <Box
         sx={{
-          height: '51.63em',
+          height: { xs: '80vh', md: '51.63em' },
           width: '100%',
         }}
       >
         <Box
           component="img"
           sx={{
+            display: { xs: 'none', md: 'flex' },
             zIndex: '-1',
             position: 'absolute',
-            width: '100%',
+            // width: '100%',
             height: '90%',
             backgroundSize: 'cover',
           }}
@@ -31,14 +32,15 @@ const Heropage = () => {
           sx={{
             height: '100%',
             width: '100%',
-            display: 'flex',
+            display: { xs: 'flex' },
             flexDirection: 'row',
+            // backgroundColor: 'black',
           }}
         >
           {/* left */}
           <Box
             sx={{
-              width: '60%',
+              width: { xs: '100%', md: '60%' },
               zIndex: '1',
               height: '100%',
               display: 'flex',
@@ -51,8 +53,8 @@ const Heropage = () => {
             <Box
               sx={{
                 position: 'relative',
-                height: '70%',
-                width: '60%',
+                height: { xs: '100%', md: '70%' },
+                width: { xs: '100%', md: '60%' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -84,22 +86,30 @@ const Heropage = () => {
               {/* Lower */}
               <Box
                 sx={{
-                  height: '50%',
+                  height: { xs: '30%', md: '50%' },
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-evenly',
                 }}
               >
                 <Box>
-                  <Typography variant="subtitle2">Connect With Us</Typography>
+                  <Typography
+                    style={{ marginLeft: { xs: '2em', md: 0 } }}
+                    variant="subtitle2"
+                  >
+                    Connect With Us
+                  </Typography>
                   <Box
                     sx={{
                       marginTop: '2em',
                       display: 'flex',
                       flexDirection: 'row',
-                      width: '50%',
+                      width: { md: '50%' },
 
-                      justifyContent: 'space-between',
+                      justifyContent: {
+                        xs: 'space-evenly',
+                        md: 'space-between',
+                      },
                     }}
                   >
                     <Button>
@@ -129,8 +139,8 @@ const Heropage = () => {
 
                 <Box
                   sx={{
-                    width: '50%',
-
+                    width: { xs: '100%', md: '50%' },
+                    display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
@@ -157,7 +167,11 @@ const Heropage = () => {
                     </Button>
                   </Link>
                 </Box>
-                <Typography variant="subtitle2" sx={{}}>
+                <Typography
+                  style={{ marginLeft: { xs: '2em', md: 0 } }}
+                  variant="subtitle2"
+                  sx={{}}
+                >
                   Trusted by many Industries
                 </Typography>
               </Box>
@@ -171,13 +185,18 @@ const Heropage = () => {
               width: '50%',
               height: '51em',
               zIndex: '0',
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               justifyContent: 'flex-end',
             }}
           >
             <Box
               component="img"
-              sx={{ width: '50%', position: 'absolute', height: '39em' }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                width: '50%',
+                position: 'absolute',
+                height: '39em',
+              }}
               src={heroMain}
             />
           </Box>

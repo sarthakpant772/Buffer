@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import {
   Badge,
+  BottomNavigation,
+  BottomNavigationAction,
   Box,
   Button,
+  CssBaseline,
   makeStyles,
   Paper,
   Typography,
 } from '@mui/material'
+import ArchiveIcon from '@mui/icons-material/Archive'
 import { textAlign } from '@mui/system'
 import { useSelector } from 'react-redux'
+import RestoreIcon from '@mui/icons-material/Restore'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 import logo from '../images/logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
@@ -38,17 +45,20 @@ const Navbar = () => {
     setLoggedIn(count)
     // console.log(userData)
   }, [noItem, tempCost, count, loggedIn])
-
+  const [value, setValue] = React.useState(0)
   return (
     <div>
       <Box
         sx={{
+          width: '100%',
+          display: { xs: 'flex' },
           boxShadow: '1px 3px 7px 1px rgba(0, 0, 0, 0.2)',
         }}
       >
         {/* upper */}
         <Box
           sx={{
+            width: '100%',
             height: '4.63em',
             display: 'flex',
             justifyContent: 'space-evenly',
@@ -57,10 +67,10 @@ const Navbar = () => {
           {/* left */}
           <Box
             sx={{
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
               justifyContent: 'center',
-              width: '5%',
+              width: { md: '5%' },
               height: '100%',
             }}
           >
@@ -78,15 +88,15 @@ const Navbar = () => {
 
           <Box
             sx={{
-              width: '90%',
+              width: { xs: '100%', md: '90%' },
               display: 'flex',
               flexDirection: 'row',
-              justifyContent: 'flex-end',
+              justifyContent: { xs: 'space-evenly', md: 'flex-end' },
               alignItems: 'center',
             }}
           >
             {/*  */}
-            <Link to="/tendernew">
+            {/* <Link to="/tendernew">
               <Button
                 sx={{
                   height: '2.50em',
@@ -102,23 +112,7 @@ const Navbar = () => {
                   Feature
                 </Typography>
               </Button>
-            </Link>
-
-            <Button
-              sx={{
-                height: '2.50em',
-                width: '10em',
-              }}
-            >
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  color: 'black',
-                }}
-              >
-                Pricing
-              </Typography>
-            </Button>
+            </Link> */}
             <Link to="/about">
               <Button
                 sx={{

@@ -15,21 +15,23 @@ const Features = () => {
       <Box
         sx={{
           width: '100%',
-
+          height: { md: '60vh' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'space-evenly',
         }}
       >
         <Box
           sx={{
-            height: '5.31em',
-            width: '61em',
+            height: { md: '5.31em' },
+            width: { xs: '100%', md: '61em' },
             alignItems: 'center',
             textAlign: 'center',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            marginBottom: '6em',
           }}
         >
           <Typography variant="h4">What's new in Buffer?</Typography>
@@ -39,17 +41,18 @@ const Features = () => {
         </Box>
         <Box
           sx={{
-            width: '106.56em',
-            height: '31.56em',
+            width: { xs: '100%', md: '100%' },
+            height: { md: '31.56em' },
             display: 'flex',
-            flexDirection: 'row',
+            alignItems: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
             justifyContent: 'space-between',
           }}
         >
           <Box
             sx={{
               height: '29.31em',
-              width: '25.69em',
+              width: { xs: '70%', md: '25.69em' },
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'center',
@@ -66,7 +69,7 @@ const Features = () => {
             <Box
               sx={{
                 height: '70%',
-                width: '50%',
+                width: { xs: '80%', md: '50%' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
@@ -97,16 +100,16 @@ const Features = () => {
                   is selected when seller wanst his tender to be closed.
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
+              {/* <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
                 Read More {'>>'}
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
           {/* 2 */}
           <Box
             sx={{
               height: '29.31em',
-              width: '25.69em',
+              width: { xs: '70%', md: '25.69em' },
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'center',
@@ -123,7 +126,7 @@ const Features = () => {
             <Box
               sx={{
                 height: '70%',
-                width: '50%',
+                width: { xs: '80%', md: '50%' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
@@ -154,16 +157,16 @@ const Features = () => {
                   your delivery patner alot.
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
+              {/* <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
                 Read More {'>>'}
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
           {/* 3 */}
           <Box
             sx={{
               height: '29.31em',
-              width: '25.69em',
+              width: { xs: '70%', md: '25.69em' },
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'center',
@@ -180,7 +183,7 @@ const Features = () => {
             <Box
               sx={{
                 height: '70%',
-                width: '50%',
+                width: { xs: '80%', md: '50%' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
@@ -189,7 +192,7 @@ const Features = () => {
             >
               <Box
                 component="img"
-                sx={{ width: '4.38em', height: '4.38em' }}
+                sx={{ width: '4.38em', height: { xs: '4.38em' } }}
                 src={broker}
               ></Box>
               <Box
@@ -212,18 +215,17 @@ const Features = () => {
                   at same time.
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
+              {/* <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
                 Read More {'>>'}
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
-
 
           {/* 4 */}
           <Box
             sx={{
               height: '29.31em',
-              width: '25.69em',
+              width: { xs: '70%', md: '25.69em' },
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'center',
@@ -240,7 +242,7 @@ const Features = () => {
             <Box
               sx={{
                 height: '70%',
-                width: '50%',
+                width: { xs: '80%', md: '50%' },
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
@@ -271,9 +273,9 @@ const Features = () => {
                   one place to other.
                 </Typography>
               </Box>
-              <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
+              {/* <Typography variant="subtitle1" sx={{ textAlign: 'start' }}>
                 Read More {'{' >> '}'}
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
         </Box>
